@@ -1,0 +1,213 @@
+{
+  "Layout": {
+    "Header": {
+      "Nav": {
+        "products": "Products",
+        "all": "Catalog",
+        "spades": "Spades",
+        "accessories": "Accessories"
+      },
+      "Buttons": {
+        "quote": "Request a Quote"
+      },
+      "Switchers": {
+        "Locale": {
+          "Language": {
+            "en": "English",
+            "fr": "French"
+          }
+        },
+        "Theme": {
+          "light": "Light",
+          "dark": "Dark",
+          "system": "System"
+        }
+      }
+    },
+    "Pages": {
+      "Index": {
+        "HomeHero": {
+          "title": "Find the Transplanter You Need.",
+          "subtitle": "Discover the power and precision of our competitively priced spades designed to revolutionize your excavation and tree transplantation projects.",
+          "cta": "View Products"
+        },
+        "HomeHighlight": {
+          "hightLight-1": "1-10 minutes/tree",
+          "hightLight-2": "success rate",
+          "hightLight-3": "Best market price!"
+        },
+        "HomeTopProducts": {
+          "title": "Top Products",
+          "cardTitle": "Spade with {numberOfSpade} blades, Ø{upperTreeBallDiameter}",
+          "cardDescription": "This spade will allow you to transplant trees with a diameter at breast height of Ø{diameterBreastHeight} with ease and efficiency.",
+          "cta": "View all products"
+        },
+        "HomeHighlightTwo": {
+          "title": "Acting for a Sustainable Future",
+          "hightLight-1": "Less felling",
+          "hightLight-2": "Improve your offering",
+          "hightLight-3": "Satisfy your customers"
+        },
+        "HomeProjects": {
+          "title": "Transplant in all your projects",
+          "Card-1": {
+            "cardTitle": "Urban Projects",
+            "cardDescription": "Municipalities are increasingly demanding transplantation for their urban projects, become their new reference landscaper?"
+          },
+          "Card-2": {
+            "cardTitle": "Construction Projects",
+            "cardDescription": "Offer builders/developers the possibility to plant their trees anew on their new construction projects."
+          },
+          "Card-3": {
+            "cardTitle": "Landscaping",
+            "cardDescription": "Optimize landscaping by integrating mature trees. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo quae odit perspiciatis deserunt, dignissimos reprehenderit labore libero perferendis sit nobis."
+          }
+        },
+        "HomeTerms": {
+          "title": "Delivery & Warranty"
+        },
+        "HomeSustainability": {
+          "title": "Why Transplant?",
+          "div-1": "Don’t wait decades for the tree to grow. Gain up to 30 years and transplant adult trees on your projects",
+          "div-2": "Beautify your projects! Offer your clients mature trees that will provide flowers and fruit in the second year after transplantation",
+          "div-3": "If you love them, don’t cut them down, transplant them. We need them now more than ever"
+        },
+        "HomeGO": {
+          "title": "A Growing Demand",
+          "div-1": ", that’s the annual growth in quote requests announced by ASC, a transplantation specialist since 2020.",
+          "div-2": "More and more municipalities and developers are urgently seeking companies equipped with transplanters.",
+          "div-3": "Take advantage of a market with little competition and become the reference in your region! We are the first to offer transplanters at affordable prices. Be the first to equip yourself"
+        }
+      },
+      "Products": {
+        "title": "Complete Catalog",
+        "subtitle": "All our products are available only on quotation.",
+        "Spades": {
+          "title": "All our spades",
+          "subtitle": "All our spades are available only by quote.",
+          "cardTitle": "Spade with {numberOfSpade} blades, Ø{upperTreeBallDiameter}",
+          "cardDescription": "This spade will allow you to transplant trees with a diameter of Ø{diameterBreastHeight} simply and efficiently."
+        },
+        "Accessories": {
+          "title": "All our accessories",
+          "subtitle": "All our accessories are available only by quote.",
+          "cardTitle": "Accessories",
+          "cardDescription": "These accessories will enable you to transplant trees simply and efficiently."
+        },
+        "Product": {
+          "notFound": "This product does not exist.",
+          "addToCart": "Add to cart",
+          "video": "Video",
+          "details": "Details",
+          "Spades": {
+            "title": "Spade with {numberOfSpade} blades, Ø{upperTreeBallDiameter}",
+            "reference": "Reference: {reference}",
+            "description": "This spade will allow you to transplant trees of Ø{diameterBreastHeight} with ease and efficiency.",
+            "footer": "The product is constantly updated and improved. We reserve the right to change the parameters and design without prior notice to the user. The appearance of the product and the color in the photo may differ from the actual product.",
+            "Details": {
+              "id": "Identifier",
+              "model": "Model",
+              "manufacturer": "Manufacturer",
+              "price": "Price",
+              "top": "Featured",
+              "name": "Name",
+              "reference": "Reference",
+              "size": "Dimensions (L x W x H)",
+              "length": "Length",
+              "width": "Width",
+              "height": "Height",
+              "widthOpen": "Open Width",
+              "weight": "Weight",
+              "diameterBreastHeight": "Trunk Diameter at 1.3m",
+              "adjustableTreeBallDiameter": "Adjustable Tree Ball Diameter",
+              "upperTreeBallDiameter": "Upper Tree Ball Diameter",
+              "lowerTreeBallDiameter": "Lower Tree Ball Diameter",
+              "treeBallVolume": "Tree Ball Volume",
+              "depthTreeBall": "Tree Ball Depth",
+              "numberOfSpade": "Number of Blades",
+              "minimalMachineRequirements": "Minimum Machine Requirements",
+              "minimalExcavatorWeight": "Minimum Excavator Weight",
+              "minimalSkidSteerLoaderPower": "Minimum Skid Steer Loader Power",
+              "thumbnail": "Thumbnails",
+              "video": "Video",
+              "tons": "Tons"
+            }
+          },
+          "Accessories": {}
+        }
+      },
+      "Checkout": {
+        "PagePreview": {
+          "cart": "Cart",
+          "information": "Information",
+          "confirmation": "Confirmation"
+        },
+        "QuoteList": {
+          "title": "Cart",
+          "noQuote": "Select at least one product to make a quote request.",
+          "Header": {
+            "product": "Product",
+            "description": "Description",
+            "quantity": "Quantity"
+          },
+          "descriptions": "Spade with {numberOfSpade} blades, Ø{upperTreeBallDiameter}"
+        },
+        "ProductsList": {
+          "title": "Products",
+          "Card": {
+            "title": "Spade with {numberOfSpade} blades, Ø{upperTreeBallDiameter}",
+            "addToQuote": "Add"
+          }
+        },
+        "QuoteSummary": {
+          "title": "Summary",
+          "total": "Sub-total ({quantity} item)",
+          "nextStep": "Next",
+          "Delivery": {
+            "title": "Delivery",
+            "description": "Delivery times and costs will be communicated in the quote"
+          },
+          "Card": {
+            "title": "Spade with {numberOfSpade} blades, Ø{upperTreeBallDiameter}"
+          }
+        },
+        "QuoteForm": {
+          "title": "Information",
+          "Form": {
+            "title": "Quote Request",
+            "firstname": "First Name",
+            "lastname": "Last Name",
+            "email": "Email",
+            "phone": "Phone",
+            "company": "Company",
+            "address": "Delivery Address",
+            "zipcode": "ZIP Code",
+            "billingAddress": "Billing Address",
+            "optional": "If different",
+            "billingZipcode": "ZIP Code",
+            "nextStep": "Next"
+          }
+        },
+        "Confirmation": {
+          "title": "Quote Sent!",
+          "subtitle": "All information has been successfully transmitted.",
+          "text": "Thank you for your time, you will be contacted soon at {email}.",
+          "nextStep": "Return to Home"
+        }
+      }
+    },
+    "Footer": {
+      "copyright": "© 2024. All rights reserved.",
+      "legalNotice": "Legal Notice",
+      "generalConditions": "General Conditions",
+      "Partner": {
+        "title": "Our Partners"
+      }
+    },
+    "Cart": {
+      "title": "Cart",
+      "goods": "Goods",
+      "quote": "Request a Quote"
+    }
+  }
+}

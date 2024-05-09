@@ -1,0 +1,213 @@
+{
+  "Layout": {
+    "Header": {
+      "Nav": {
+        "products": "Produits",
+        "all": "Catalogue",
+        "spades": "Bêches",
+        "accessories": "Accessoires"
+      },
+      "Buttons": {
+        "quote": "Demander un devis"
+      },
+      "Switchers": {
+        "Locale": {
+          "Language": {
+            "en": "Anglais",
+            "fr": "Français"
+          }
+        },
+        "Theme": {
+          "light": "Clair",
+          "dark": "Sombre",
+          "system": "Système"
+        }
+      }
+    },
+    "Pages": {
+      "Index": {
+        "HomeHero": {
+          "title": "Trouvez la Transplanteuse qu'il vous faut.",
+          "subtitle": "Découvrez la puissance et la précision de nos bêches à prix concurenciel conçue pour révolutionner vos projets d'excavation et de transplantation d'arbres.",
+          "cta": "Voir les produits"
+        },
+        "HomeHighlight": {
+          "hightLight-1": "1-10 minutes/arbre",
+          "hightLight-2": "de taux de reussite",
+          "hightLight-3": "Meilleur prix du marché!"
+        },
+        "HomeTopProducts": {
+          "title": "Produits phares",
+          "cardTitle": "Bêche à {numberOfSpade} lames, Ø{upperTreeBallDiameter}",
+          "cardDescription": "Cette bêche vous permettra de transplanter des arbres de Ø{diameterBreastHeight} en toute simplicité et efficacité.",
+          "cta": "Voir tous les produits"
+        },
+        "HomeHighlightTwo": {
+          "title": "Agir pour un Avenir Durable",
+          "hightLight-1": "Moins d'abattage",
+          "hightLight-2": "Améliorer votre offre",
+          "hightLight-3": "Satisfaisez vos clients"
+        },
+        "HomeProjects": {
+          "title": "Transplanter dans tout vos projets",
+          "Card-1": {
+            "cardTitle": "Projets Urbain",
+            "cardDescription": "Les collectivitées sont de plus en plus demandeuse de transplantation sur leur projetts urbain, soyez leur nouveau paysagiste de réference?"
+          },
+          "Card-2": {
+            "cardTitle": "Projet de construction",
+            "cardDescription": "Offrez aux constructeur/promoteurs la possibilitées d'implanter leurs arbres ou nouveau sur leurs projet de construction neuve."
+          },
+          "Card-3": {
+            "cardTitle": "Amenagement paysagé",
+            "cardDescription": "Optimiser lamenagement paysager en integrant des arbres mature Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo quae odit perspiciatis deserunt, dignissimos reprehenderit labore libero perferendis sit nobis."
+          }
+        },
+        "HomeTerms": {
+          "title": "Livraison & Guarantie"
+        },
+        "HomeSustainability": {
+          "title": "Pourquoi transplanter?",
+          "div-1": "N’attendez plus des décennies que l’arbre pousse. Gagnez jusqu’à 30 ans d’attente et transplantez les adultes sur vos projets",
+          "div-2": "Embellissez vos projets ! Offrez à vos clients des arbres matures qui offriront des fleurs et fruits dans la deuxième année de transplantation",
+          "div-3": "Si vous les aimez, ne les abattez plus, transplantez les. Nous avons besoin d’eux plus que jamais"
+        },
+        "HomeGO": {
+          "title": "Une demande croissante",
+          "div-1": ", c’est la croissance annuelle de demande de devis annoncée par la société ASC, spécialiste de la transplantation depuis 2020.",
+          "div-2": "Les collectivités et aménageurs sont de plus en plus nombreux à solliciter des entreprises équipées de transplanteuses, souvent dans l’urgence.",
+          "div-3": "Profitez d’un marché avec peu de concurrence et devenez le référent de votre région ! Nous sommes les premiers à offrir des transplanteuses à des prix accessibles. Soyez le premier à vous équiper"
+        }
+      },
+      "Products": {
+        "title": "Catalogue Complet",
+        "subtitle": "Tous nos produits ne sont disponibles que sur devis.",
+        "Spades": {
+          "title": "Toute nos bêches",
+          "subtitle": " Toutes nos bêches sont disponibles seulement sur devis.",
+          "cardTitle": "Bêche à {numberOfSpade} lames, Ø{upperTreeBallDiameter}",
+          "cardDescription": "Cette bêche vous permettra de transplanter des arbres de Ø{diameterBreastHeight} en toute simplicité et efficacité."
+        },
+        "Accessories": {
+          "title": "Accessoires",
+          "subtitle": "Ces accessoires vous permettront de transplanter des arbres de en toute simplicité et efficacité.",
+          "cardTitle": "Accessoires",
+          "cardDescription": "Ces accessoires vous permettront de transplanter des arbres de en toute simplicité et efficacité."
+        },
+        "Product": {
+          "notFound": "Ce produit n'existe pas.",
+          "addToCart": "Ajouter au panier",
+          "video": "Vidéo",
+          "details": "Détails",
+          "Spades": {
+            "title": "Bêche à {numberOfSpade} lames, Ø{upperTreeBallDiameter}",
+            "reference": "Réference: {reference}",
+            "description": "Cette bêche vous permettra de transplanter des arbres de Ø{diameterBreastHeight} en toute simplicité et efficacité.",
+            "footer": "Le produit est constamment mis à jour et amélioré. Nous nous réservons le droit de modifier les paramètres et la conception sans en avertir l'utilisateur au préalable. L'apparence du produit et la couleur sur la photo  peut différer du produit réel.",
+            "Details": {
+              "id": "Identifiant",
+              "model": "Modèle",
+              "manufacturer": "Fabricant",
+              "price": "Prix",
+              "top": "En vedette",
+              "name": "Nom",
+              "reference": "Référence",
+              "size": "Dimensions (L x l x H)",
+              "length": "Longueur",
+              "width": "Largeur",
+              "height": "Hauteur",
+              "widthOpen": "Largeur ouverte",
+              "weight": "Poids",
+              "diameterBreastHeight": "Diamètre du tronc à 1,3m",
+              "adjustableTreeBallDiameter": "Diamètre de motte ajustable",
+              "upperTreeBallDiameter": "Diamètre supérieur de la motte",
+              "lowerTreeBallDiameter": "Diamètre inférieur de la motte",
+              "treeBallVolume": "Volume de la motte",
+              "depthTreeBall": "Profondeur de la motte",
+              "numberOfSpade": "Nombre de lames",
+              "minimalMachineRequirements": "Exigences minimales de la machine",
+              "minimalExcavatorWeight": "Poids minimal de l'excavatrice",
+              "minimalSkidSteerLoaderPower": "Puissance minimale du chargeur compact",
+              "thumbnail": "Miniatures",
+              "video": "Vidéo",
+              "tons": "Tonnes"
+            }
+          },
+          "Accessories": {}
+        }
+      },
+      "Checkout": {
+        "PagePreview": {
+          "cart": "Panier",
+          "information": "Information",
+          "confirmation": "Confirmation"
+        },
+        "QuoteList": {
+          "title": "Panier",
+          "noQuote": "Selectionnez au minimum un produit pour faire une demande devis.",
+          "Header": {
+            "product": "Produit",
+            "description": "Déscription",
+            "quantity": "Quantité"
+          },
+          "descriptions": "Bêche à {numberOfSpade} lames, Ø{upperTreeBallDiameter}"
+        },
+        "ProductsList": {
+          "title": "Produits",
+          "Card": {
+            "title": "Bêche à {numberOfSpade} lames, Ø{upperTreeBallDiameter}",
+            "addToQuote": "Ajouter"
+          }
+        },
+        "QuoteSummary": {
+          "title": "Récapitulatif",
+          "total": "Sous-total ({quantity} article)",
+          "nextStep": "Suivant",
+          "Delivery": {
+            "title": "Livraison",
+            "description": "Les délais et frais de livraison seront transmit dans le devis"
+          },
+          "Card": {
+            "title": "Bêche à {numberOfSpade} lames, Ø{upperTreeBallDiameter}"
+          }
+        },
+        "QuoteForm": {
+          "title": "Informations",
+          "Form": {
+            "title": "Demande de devis",
+            "firstname": "Prénom",
+            "lastname": "Nom",
+            "email": "Email",
+            "phone": "Telephone",
+            "company": "Société",
+            "address": "Adresse de livraison",
+            "zipcode": "Code postal",
+            "billingAddress": "Adresse de facturation",
+            "optional": "Si differente",
+            "billingZipcode": "Code postal",
+            "nextStep": "Suivant"
+          }
+        },
+        "Confirmation": {
+          "title": "Devis envoyé!",
+          "subtitle": "Toutes les informations ont été transmises avec succès.",
+          "text": "Merci pour votre temps, vous serez contacté d'ici peu à l'adresse {email}.",
+          "nextStep": "Retour à l'accueil"
+        }
+      }
+    },
+    "Footer": {
+      "copyright": "© 2024. Tous droits réservés.",
+      "legalNotice": "Mentions legales",
+      "generalConditions": "Conditions generales",
+      "Partner": {
+        "title": "Nos Partenaires"
+      }
+    },
+    "Cart": {
+      "title": "Panier",
+      "goods": "Articles",
+      "quote": "Demander un devis"
+    }
+  }
+}
