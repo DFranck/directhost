@@ -1,7 +1,7 @@
 import Cart from "@/components/Cart";
 import Footer from "@/components/layout/footer";
-import Header from "@/components/layout/header";
 import Main from "@/components/layout/main";
+import NoAuthHeader from "@/components/layout/noAuthHeader";
 import { cn } from "@/lib/utils";
 import Providers from "@/providers/providers";
 import type { Metadata } from "next";
@@ -29,8 +29,8 @@ export default function LocaleLayout({
         className={cn(inter.className, "flex flex-col min-h-screen mx-auto")}
       >
         <Providers messages={messages}>
-          <Header />
-          <Main className="flex-1">
+          <NoAuthHeader name="Résidence les Coquelicots" />
+          <Main className="flex-1 max-w-7xl mx-auto">
             {children}
             <Cart />
           </Main>

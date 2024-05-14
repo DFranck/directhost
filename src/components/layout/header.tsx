@@ -10,12 +10,12 @@ import { cn } from "@/lib/utils";
 import LocaleSwitcher from "@/providers/language/locale-switcher";
 import { ThemeSwitcher } from "@/providers/theme/theme-switcher";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
 import NavBurger from "../NavBurger";
-import LogoSvg from "../svg/LogoSvg";
 import QuoteSvg from "../svg/QuoteSvg";
 import { Button } from "../ui/button";
-const Header = () => {
+const Header = ({ logo, name }: { logo?: string; name?: string }) => {
   const t = useTranslations("Layout.Header");
   const locale = useLocale();
   const liStyle = "hover:bg-accent px-2 py-1.5 rounded";
@@ -26,8 +26,14 @@ const Header = () => {
     <header className=" p-6 ">
       <div className="flex justify-between items-center max-w-screen-2xl mx-auto">
         <Link className="rounded-full hover:opacity-80" href="/">
-          <LogoSvg className="w-16 h-16" fill="foreground" />
+          <h1>Résidence les Coclicot</h1>
+          {/* <LogoSvg className="w-16 h-16" fill="foreground" /> */}
           <span className="sr-only">Logo</span>
+          {logo ? (
+            <Image src={logo} alt="logo" width={256} height={256} />
+          ) : (
+            <h1>{name}</h1>
+          )}
         </Link>
 
         <div className=" md:flex">
