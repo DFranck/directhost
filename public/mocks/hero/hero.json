@@ -1,5 +1,10 @@
 {
   "imgs": [
+    "/mocks/hero/maison.webp",
+    "/mocks/hero/salon.webp",
+    "/mocks/hero/salon2.webp",
+    "/mocks/hero/salon3.webp",
+    "/mocks/hero/sdb.webp",
     "/mocks/hero/chambre-principale.png",
     "/mocks/hero/coin-zen.png",
     "/mocks/hero/objet.png",

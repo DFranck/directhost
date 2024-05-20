@@ -1,3 +1,4 @@
+import { ModalProvider } from "@/providers/modal/modal-provider";
 import { AbstractIntlMessages } from "next-intl";
 import React from "react";
 import { QuoteProvider } from "./cart/cart-provider";
@@ -18,7 +19,9 @@ const Providers = ({
       disableTransitionOnChange
     >
       <LanguageProvider messages={messages}>
-        <QuoteProvider>{children}</QuoteProvider>
+        <ModalProvider>
+          <QuoteProvider>{children}</QuoteProvider>
+        </ModalProvider>
       </LanguageProvider>
     </ThemeProvider>
   );
