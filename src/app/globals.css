@@ -74,6 +74,10 @@
   h3 {
     @apply text-lg md:text-xl lg:text-2xl font-medium text-foreground leading-normal;
   }
+
+  h4 {
+    @apply text-base md:text-base lg:text-lg font-medium text-foreground leading-normal;
+  }
   * {
     @apply border-border;
   }

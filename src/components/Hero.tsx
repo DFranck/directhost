@@ -1,8 +1,6 @@
 "use client";
 import { useModal } from "@/providers/modal/modal-provider";
-import { Share } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import Section from "./layout/section";
 import { Button } from "./ui/button";
 
@@ -14,10 +12,10 @@ const Hero = ({ images }: { images?: HeroImagesSrc }) => {
   const mainImg: ImageSrc = images?.[0];
   const followingImg: HeroImagesSrc = images?.slice(1, 5);
   return (
-    <Section className="flex items-start flex-col-reverse md:flex-col p-0 md:p-6 lg:p-10">
+    <Section className="hidden md:flex items-start flex-col-reverse md:flex-col p-0">
       <Button
         variant={"outline"}
-        className="hidden md:flex absolute bottom-[10%] right-[10%] mb-10 gap-4 rounded-xl border border-foreground z-10"
+        className="hidden md:flex absolute bottom-10 right-6  gap-4 rounded-xl border border-foreground z-10"
         onClick={() => toggleModal()}
       >
         <svg
@@ -35,14 +33,14 @@ const Hero = ({ images }: { images?: HeroImagesSrc }) => {
       </Button>
 
       <div className="w-full flex justify-between">
-        <h2>Réveillez-vous au millieux des champs</h2>
+        {/* <h2 className="p-4 md:p-0">Réveillez-vous au millieux des champs</h2>
         <Link
           href={""}
-          className="flex items-center gap-2 underline text-sm font-semibold"
+          className=" items-center gap-2 underline text-sm font-semibold hidden md:flex"
         >
           <Share width={16} height={16} />
           Partager
-        </Link>
+        </Link> */}
       </div>
       <div className="grid md:grid-cols-2 md:my-6 gap-2 md:rounded-xl overflow-hidden relative">
         {mainImg && (
