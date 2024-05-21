@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import Section from "./layout/section";
 
 const HeroCarrousel = () => {
-  console.log(hero);
   const [imgs, setImgs] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -74,7 +73,7 @@ const HeroCarrousel = () => {
             <h5 className="w-full text-center">Airbnb</h5>
             <div className="w-22 h-10">
               <svg
-                enable-background="new 0 0 1991.3 2143.2"
+                enableBackground="new 0 0 1991.3 2143.2"
                 viewBox="0 0 1991.3 2143.2"
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-full h-full"
@@ -90,11 +89,6 @@ const HeroCarrousel = () => {
             <h5 className="w-full text-center">Booking</h5>
             <div className="w-full h-10">
               <svg
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                height="2445"
-                stroke-linejoin="round"
-                stroke-miterlimit="1.414"
                 viewBox="-.092 .015 2732.125 2671.996"
                 className="w-full h-full"
                 xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +101,7 @@ const HeroCarrousel = () => {
                   d="m.001 1659.991h1364.531v1012.019h-1364.53z"
                   fill="#0c3b7c"
                 />
-                <g fill-rule="nonzero">
+                <g fillRule="nonzero">
                   <path
                     d="m1241.6 1768.638-220.052-.22v-263.12c0-56.22 21.808-85.48 69.917-92.165h150.136c107.068 0 176.328 67.507 176.328 176.766 0 112.219-67.507 178.63-176.328 178.739zm-220.052-709.694v-69.26c0-60.602 25.643-89.424 81.862-93.15h112.657c96.547 0 154.41 57.753 154.41 154.52 0 73.643-39.671 159.67-150.903 159.67h-198.026zm501.037 262.574-39.78-22.356 34.74-29.699c40.437-34.74 108.163-112.876 108.163-247.67 0-206.464-160.109-339.614-407.888-339.614h-282.738v-.11h-32.219c-73.424 2.74-132.273 62.466-133.04 136.329v1171.499h453.586c275.396 0 453.148-149.917 453.148-382.135 0-125.04-57.424-231.889-153.972-286.244"
                     fill="#fff"
@@ -144,9 +138,9 @@ const HeroCarrousel = () => {
                 <path
                   d="M377.76 144.62C425.917 180.744 461 218.161 461 260.919C461 338.909 416.206 406.443 350.931 439.217M377.76 144.62C343.052 118.584 301.552 93.2199 261.5 67.011C161.062 135.773 62 199.033 62 260.919C62 360.045 134.362 442.279 229.167 457.721C242.926 459.963 245.795 455.255 259.5 439.217M377.76 144.62V81.4509M259.5 439.217C297.159 395.148 354 309.603 354 259.011C354 211.763 315.002 169.011 263 169.011C206 169.011 169.5 215.004 169.5 259.011C169.5 315.103 220.798 372.452 259.5 439.217Z"
                   stroke="white"
-                  stroke-width="35"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="35"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M337 262.011C337 303.432 262 409.011 262 409.011C262 409.011 187 303.432 187 262.011C187 220.59 220.579 187.011 262 187.011C303.421 187.011 337 220.59 337 262.011Z"
@@ -162,8 +156,8 @@ const HeroCarrousel = () => {
                     y2="524.011"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#FF385C" />
-                    <stop offset="1" stop-color="#7C3AED" />
+                    <stop stopColor="#FF385C" />
+                    <stop offset="1" stopColor="#7C3AED" />
                   </linearGradient>
                   <linearGradient
                     id="paint1_linear_40_25"
@@ -173,8 +167,8 @@ const HeroCarrousel = () => {
                     y2="409.011"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#FF385C" />
-                    <stop offset="1" stop-color="#7C3AED" />
+                    <stop stopColor="#FF385C" />
+                    <stop offset="1" stopColor="#7C3AED" />
                   </linearGradient>
                 </defs>
               </svg>

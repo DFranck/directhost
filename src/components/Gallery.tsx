@@ -7,8 +7,6 @@ import { Button } from "./ui/button";
 
 const Gallery = ({ images }: { images?: HeroImagesSrc }) => {
   const { isModalOpen, closeModal, toggleModal } = useModal();
-  console.log(isModalOpen);
-
   return (
     <div
       className={cn(

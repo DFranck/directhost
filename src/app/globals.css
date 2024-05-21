@@ -63,6 +63,21 @@
   .bg-gradient {
     background-image: var(--gradient);
   }
+  .event-airbnb {
+    background-color: #e0565b;
+  }
+  .event-booking {
+    background-color: #0c3b7c;
+  }
+  .event-other {
+    background-color: #7cb342;
+  }
+  .past-date {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .fc-daygrid-event-harness {
+    padding: 2px;
+  }
   h1 {
     @apply text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight;
   }
