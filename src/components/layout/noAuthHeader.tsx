@@ -1,9 +1,11 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import LocaleSwitcher from "@/providers/language/locale-switcher";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import NavBurger from "../NavBurger";
 import { Button } from "../ui/button";
 const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
@@ -13,8 +15,18 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
   const dropDownItemClass = "transition-colors w-full";
   const triggerInDropdown =
     "hover:bg-accent  rounded px-2 py-1.5 w-full text-start";
+  const pathName = usePathname();
+  const isHomePage = pathName === `/${locale}` ? true : false;
   return (
-    <header className=" p-6 border-b md:absolute top-0 left-0 w-full z-10 bg-gradient-to-b from-background/100 to-background/50">
+    <header
+      className={cn(
+        {
+          "md:absolute": isHomePage,
+          "md:relative": !isHomePage,
+        },
+        " p-6 border-b top-0 left-0 w-full z-10 bg-gradient-to-b from-background/100 to-background/50"
+      )}
+    >
       <div className="flex justify-between items-center max-w-screen-2xl mx-auto">
         <Link
           className="rounded-full hover:opacity-80 flex gap-5 items-center"
@@ -112,10 +124,16 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
             <h1>{name}</h1>
           )}
         </Link>
-
+        <nav>
+          <ul>
+            <li>
+              <Link href={`/${locale}/#schedule`}>Calendrier</Link>
+            </li>
+          </ul>
+        </nav>
         <div className=" md:flex">
           <Button asChild className="mx-2">
-            <Link href={`/${locale}/checkout/cart`}>
+            <Link href={`/${locale}/schedule`}>
               <span className="hidden md:flex">Reserver</span>
             </Link>
           </Button>

@@ -59,6 +59,11 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        loading: {
+          "0%": { transform: "rotate(0deg)" },
+
+          "100%": { transform: "rotate(360deg)" },
+        },
         slideInFromRight: {
           "0%": { transform: "translateX(50vw)", opacity: "0" },
           "100%": { transform: "translateX(0)", opacity: "1" },
@@ -106,6 +111,7 @@ module.exports = {
         },
       },
       animation: {
+        loading: "loading 1.5s ease-in-out infinite",
         slideInFromRight: "slideInFromRight 0.5s ease-out forwards",
         slideInFromLeft: "slideInFromLeft 0.5s ease-out  forwards",
         slideInFromTop: "slideInFromTop 0.5s ease-out forwards",

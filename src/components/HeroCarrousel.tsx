@@ -2,6 +2,8 @@
 import hero from "@/../public/mocks/hero/hero.json";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
+import { useLocale } from "next-intl";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Section from "./layout/section";
 
@@ -13,11 +15,17 @@ const HeroCarrousel = () => {
     }, 5000);
     return () => clearInterval(interval);
   });
+  const locale = useLocale();
+  const pathName = usePathname();
+  const isHomePage = pathName === `/${locale}` ? true : false;
+  console.log(pathName, isHomePage);
 
   return (
     <Section
       className={cn(
-        {},
+        {
+          hidden: !isHomePage,
+        },
         "md:h-screen min-h-[300px] transition-all duration-1000"
       )}
       bgImg={hero.imgs[imgs]}

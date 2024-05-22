@@ -8,6 +8,7 @@ import Providers from "@/providers/providers";
 import type { Metadata } from "next";
 import { useMessages } from "next-intl";
 import { Inter } from "next/font/google";
+import { usePathname } from "next/navigation";
 import "../globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function LocaleLayout({
   params: { locale: string };
 }) {
   const messages = useMessages();
+
   return (
     <html lang={locale}>
       <body

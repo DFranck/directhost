@@ -11,7 +11,9 @@ export default function Index() {
       <PropertyPresentation />
       <Hero images={hero.imgs} />
       <PropertyDetails />
-      <Schedule />
+      <div id="schedule">
+        <Schedule />
+      </div>
       <Location />
       {/* <Host /> */}
       <Gallery images={hero.imgs} />
