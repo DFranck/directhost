@@ -18,19 +18,23 @@ const HeroCarrousel = () => {
   const locale = useLocale();
   const pathName = usePathname();
   const isHomePage = pathName === `/${locale}` ? true : false;
-  console.log(pathName, isHomePage);
 
   return (
     <Section
       className={cn(
         {
-          hidden: !isHomePage,
+          "absolute translate-y-[109px]": !isHomePage,
         },
-        "md:h-screen min-h-[300px] transition-all duration-1000"
+        "h-screen min-h-[300px] transition-all duration-1000"
       )}
       bgImg={hero.imgs[imgs]}
     >
-      <div className="hidden md:block absolute bottom-20 right-10 bg-background/90 w-60 rounded">
+      <div
+        className={cn(
+          { hidden: !isHomePage, "md:block": isHomePage },
+          "hidden  absolute bottom-20 right-10 bg-background/90 w-60 rounded"
+        )}
+      >
         <h3 className="bg-primary text-primary-foreground px-4 rounded-t">
           Avantages
         </h3>
@@ -72,7 +76,12 @@ const HeroCarrousel = () => {
           </li>
         </ul>
       </div>
-      <div className="hidden lg:block absolute bottom-20 left-10">
+      <div
+        className={cn(
+          { hidden: !isHomePage, "hidden lg:block": isHomePage },
+          "absolute bottom-20 left-10"
+        )}
+      >
         <h3 className="w-full text-center bg-background/90 rounded px-4 py-2 mb-4">
           Calendier Synchronisé
         </h3>

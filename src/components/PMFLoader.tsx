@@ -1,26 +1,29 @@
 import Image from "next/image";
+import Section from "./layout/section";
 
 const PMFLoader = () => {
   return (
-    <div
-      className="w-full relative flex justify-center items-center"
-      style={{ height: "calc(full - 108px)" }}
-    >
-      <Image
-        src={"/assets/svg/dynamic-logo.svg"}
-        alt="logo-static"
-        width={50}
-        height={50}
-        className="w-1/2 h-1/2 animate-loading"
-      />
-      <Image
-        src={"/assets/svg/static-logo.svg"}
-        alt="logo-static"
-        width={50}
-        height={50}
-        className="w-1/2 h-1/2 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
-      />
-    </div>
+    <Section className="w-screen h-screen relative flex justify-center items-center">
+      <div>
+        <Image
+          src={"/assets/svg/dynamic-logo.svg"}
+          alt="logo-static"
+          width={50}
+          height={50}
+          className="w-40 h-40 animate-loading"
+        />
+        <Image
+          src={"/assets/svg/static-logo.svg"}
+          alt="logo-static"
+          width={50}
+          height={50}
+          className="w-24 h-24 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
+        />
+      </div>
+      {/* <h2 className="absolute bottom-10 left-1/2 translate-x-[-50%] text-center w-full">
+        Récupération des calendrier en cours.
+      </h2> */}
+    </Section>
   );
 };
 

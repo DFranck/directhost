@@ -8,8 +8,19 @@ import { isPast } from "date-fns";
 import { useEffect, useState } from "react";
 import PMFLoader from "./PMFLoader";
 import Section from "./layout/section";
+import { Button } from "./ui/button";
+
+type CalendarEvent = {
+  title: string;
+  start: Date;
+  end: Date;
+  extendedProps: {
+    source: string;
+  };
+};
+
 const Schedule = () => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedDates, setSelectedDates] = useState<{
     start: Date;
@@ -48,21 +59,29 @@ const Schedule = () => {
   };
 
   const handleDateSelect = (selectInfo: any) => {
+    setSelectedDates(null);
+
     const { start, end } = selectInfo;
     setSelectedDates({ start, end });
-    console.log("Dates selected", selectInfo);
+    console.log("selectInfo", start, end);
   };
 
   const isDateReserved = (date: Date) => {
-    return events.some((event) => {
-      date >= new Date(event.start) && date < new Date(event.end);
+    const reserved = events.some((event) => {
+      return date >= new Date(event.start) && date < new Date(event.end);
     });
+    // console.log(`Date ${date.toISOString()} is reserved: ${reserved}`);
+    return reserved;
   };
   const handleSelectAllow = (selectInfo: any) => {
     const { start, end } = selectInfo;
     let date = new Date(start);
+
     while (date < end) {
-      if (isDateReserved(date)) {
+      if (isDateReserved(date) || isPast(date)) {
+        // console.log(
+        //   `Date range from ${start} to ${end} includes a reserved or past date.`
+        // );
         return false;
       }
       date.setDate(date.getDate() + 1);
@@ -70,47 +89,49 @@ const Schedule = () => {
     return true;
   };
   return (
-    <Section className="schedule px-4">
+    <>
       {loading ? (
-        <>
-          <PMFLoader />
-          <h2 className="mt-10 text-center">
-            Récupération des calendrier en cours.
-          </h2>
-        </>
+        <PMFLoader />
       ) : (
-        <>
-          <FullCalendar
-            plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
-            initialView="dayGridMonth"
-            events={events}
-            contentHeight={"auto"}
-            selectable={true}
-            select={handleDateSelect}
-            selectAllow={handleSelectAllow}
-            eventClassNames={getEventClassNames}
-            dayCellClassNames={({ date }) => getDateClassNames(date)}
-            eventTimeFormat={{
-              hour: "2-digit",
-              minute: "2-digit",
-              meridiem: false,
-            }}
-            headerToolbar={{
-              left: "prev,next",
-              center: "",
-              right: "title",
-              // right: "dayGridMonth,timeGridWeek,timeGridDay",
-            }}
-            buttonText={{
-              today: "Aujourd'hui",
-              month: "Mois",
-              week: "Semaine",
-              day: "Jour",
-            }}
-          />
-        </>
+        <Section className="schedule px-4 py-20 ">
+          <>
+            <div className="bg-background/95 rounded p-5">
+              <FullCalendar
+                plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
+                initialView="dayGridMonth"
+                events={events}
+                contentHeight={"auto"}
+                selectable={true}
+                select={handleDateSelect}
+                selectAllow={handleSelectAllow}
+                eventClassNames={getEventClassNames}
+                dayCellClassNames={({ date }) => getDateClassNames(date)}
+                eventTimeFormat={{
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  meridiem: false,
+                }}
+                headerToolbar={{
+                  left: "prev,next",
+                  center: "",
+                  right: "title",
+                  // right: "dayGridMonth,timeGridWeek,timeGridDay",
+                }}
+                buttonText={{
+                  today: "Aujourd'hui",
+                  month: "Mois",
+                  week: "Semaine",
+                  day: "Jour",
+                }}
+              />
+              {Object.keys(selectedDates || {}).length > 0 && (
+                <Button>Faire une demande de réservation pour ses dates</Button>
+              )}
+            </div>
+          </>
+        </Section>
       )}
-    </Section>
+    </>
   );
 };
 

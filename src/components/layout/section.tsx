@@ -5,10 +5,12 @@ const Section = ({
   children,
   className,
   bgImg,
+  style,
 }: {
   children: React.ReactNode;
   className?: string;
   bgImg?: string;
+  style?: React.CSSProperties;
 }) => {
   const backgroundStyle = {
     backgroundImage: bgImg ? `url(${bgImg})` : "none",
@@ -21,7 +23,7 @@ const Section = ({
         "flex items-center justify-center flex-col w-full relative py-4 md:py-20 bg-cover bg-center",
         className
       )}
-      style={backgroundStyle}
+      style={style ? { ...backgroundStyle, ...style } : backgroundStyle}
     >
       {children}
     </section>
