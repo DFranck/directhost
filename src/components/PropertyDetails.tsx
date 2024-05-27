@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 const PropertyDetails = () => {
   return (
-    <div className="block px-4 py-2 md:col-span-2">
+    <div className="block px-4 py-2 md:col-span-2" id="about">
       <h3>Paris, France</h3>
       <p>2 voyageurs, 1 chambre1 lit, 1 salle de bain</p>
       <div className="w-full border opacity-50 my-4"></div>

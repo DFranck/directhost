@@ -1,7 +1,7 @@
 import hero from "@/../public/mocks/hero/hero.json";
+import EmbeddedMap from "@/components/EmbeddedMap";
 import Gallery from "@/components/Gallery";
 import Hero from "@/components/Hero";
-import Location from "@/components/Location";
 import PropertyDetails from "@/components/PropertyDetails";
 import PropertyPresentation from "@/components/PropertyPresentation";
 import Schedule from "@/components/Schedule";
@@ -11,10 +11,15 @@ export default function Index() {
       <PropertyPresentation />
       <Hero images={hero.imgs} />
       <PropertyDetails />
+      <div className="w-full border opacity-50 mt-24"></div>
       <div id="schedule">
         <Schedule />
       </div>
-      <Location />
+      <div className="w-full border opacity-50 mb-24"></div>
+      <div className="px-10">
+        <h2 className="w-full text-center mb-10">Localisation</h2>
+        <EmbeddedMap />
+      </div>
       {/* <Host /> */}
       <Gallery images={hero.imgs} />
     </div>

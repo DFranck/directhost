@@ -1,5 +1,6 @@
 "use client";
 
+import useOnScroll from "@/hooks/useOnScroll";
 import { cn } from "@/lib/utils";
 import LocaleSwitcher from "@/providers/language/locale-switcher";
 import { useLocale, useTranslations } from "next-intl";
@@ -17,14 +18,15 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
     "hover:bg-accent  rounded px-2 py-1.5 w-full text-start";
   const pathName = usePathname();
   const isHomePage = pathName === `/${locale}` ? true : false;
+  const scrollY = useOnScroll();
   return (
     <header
       className={cn(
         {
-          "md:absolute": isHomePage,
+          "md:fixed": isHomePage,
           "md:relative": !isHomePage,
         },
-        " p-6 border-b top-0 left-0 w-full z-10 bg-gradient-to-b from-background/100 to-background/50"
+        "transition-all p-6 border-b top-0 left-0 w-full z-10 bg-gradient-to-b from-background/100 to-background/50"
       )}
     >
       <div className="flex justify-between items-center max-w-screen-2xl mx-auto">
@@ -125,15 +127,21 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
           )}
         </Link>
         <nav>
-          <ul>
+          <ul className="flex justify-center items-center gap-5">
             <li>
               <Link href={`/${locale}/#schedule`}>Calendrier</Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/#about`}>A propos de l&apos;hôte</Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/contact`}>Contact</Link>
             </li>
           </ul>
         </nav>
         <div className=" md:flex">
           <Button asChild className="mx-2">
-            <Link href={`/${locale}/schedule`}>
+            <Link href={`/${locale}/booking`}>
               <span className="hidden md:flex">Reserver</span>
             </Link>
           </Button>

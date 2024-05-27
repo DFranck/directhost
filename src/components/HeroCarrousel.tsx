@@ -23,7 +23,7 @@ const HeroCarrousel = () => {
     <Section
       className={cn(
         {
-          "absolute translate-y-[109px]": !isHomePage,
+          "absolute translate-y-[109px] -z-10": !isHomePage,
         },
         "h-screen min-h-[300px] transition-all duration-1000"
       )}
@@ -32,7 +32,7 @@ const HeroCarrousel = () => {
       <div
         className={cn(
           { hidden: !isHomePage, "md:block": isHomePage },
-          "hidden  absolute bottom-20 right-10 bg-background/90 w-60 rounded"
+          "absolute bottom-20 right-10 bg-background/90 w-60 rounded"
         )}
       >
         <h3 className="bg-primary text-primary-foreground px-4 rounded-t">

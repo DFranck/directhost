@@ -10,7 +10,7 @@ import PMFLoader from "./PMFLoader";
 import Section from "./layout/section";
 import { Button } from "./ui/button";
 
-type CalendarEvent = {
+export type CalendarEvent = {
   title: string;
   start: Date;
   end: Date;
@@ -38,6 +38,7 @@ const Schedule = () => {
         }).then((res) => res.json());
         setEvents(res);
         setLoading(false);
+        console.log(res);
       } catch {
         console.log("error");
       }
@@ -45,14 +46,15 @@ const Schedule = () => {
     fetchReservation();
   }, []);
   const getEventClassNames = (eventInfo: any) => {
-    switch (eventInfo.event.extendedProps.source) {
-      case "airbnb":
-        return ["event-airbnb"];
-      case "booking":
-        return ["event-booking"];
-      default:
-        return ["event-other"];
-    }
+    return ["event-other"];
+    // switch (eventInfo.event.extendedProps.source) {
+    //   case "airbnb":
+    //     return ["event-airbnb"];
+    //   case "booking":
+    //     return ["event-booking"];
+    //   default:
+    //     return ["event-other"];
+    // }
   };
   const getDateClassNames = (date: Date) => {
     return isPast(date) ? "past-date" : "";
@@ -60,6 +62,7 @@ const Schedule = () => {
 
   const handleDateSelect = (selectInfo: any) => {
     setSelectedDates(null);
+    console.log("selectInfo", selectInfo);
 
     const { start, end } = selectInfo;
     setSelectedDates({ start, end });
@@ -96,6 +99,7 @@ const Schedule = () => {
         <Section className="schedule px-4 py-20 ">
           <>
             <div className="bg-background/95 rounded p-5">
+              <h2 className="w-full text-center">Calendrier Synchronisé</h2>
               <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
                 initialView="dayGridMonth"
@@ -124,10 +128,14 @@ const Schedule = () => {
                   day: "Jour",
                 }}
               />
-              {Object.keys(selectedDates || {}).length > 0 && (
-                <Button>Faire une demande de réservation pour ses dates</Button>
-              )}
             </div>
+            {Object.keys(selectedDates || {}).length > 0 && (
+              <div className="w-full flex justify-center my-5">
+                <Button className="p-5">
+                  Faire une demande de réservation pour ses dates
+                </Button>
+              </div>
+            )}
           </>
         </Section>
       )}

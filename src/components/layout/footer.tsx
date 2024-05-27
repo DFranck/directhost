@@ -6,7 +6,7 @@ const Footer = async () => {
   const locale = useLocale();
   const t = useTranslations("Layout.Footer");
   return (
-    <footer className="bg-gradient text-primary-foreground py-8 text-center mt-20">
+    <footer className="bg-gradient text-primary-foreground py-8 text-center">
       <div className="container mx-auto px-4">
         <div className="flex flex-col justify-evenly">
           <div>

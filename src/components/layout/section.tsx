@@ -20,7 +20,7 @@ const Section = ({
   return (
     <section
       className={cn(
-        "flex items-center justify-center flex-col w-full relative py-4 md:py-20 bg-cover bg-center",
+        "flex items-center justify-center px-5 flex-col w-full relative py-4 md:py-20 bg-cover bg-center",
         className
       )}
       style={style ? { ...backgroundStyle, ...style } : backgroundStyle}
