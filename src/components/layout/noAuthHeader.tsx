@@ -3,40 +3,36 @@
 import useOnScroll from "@/hooks/useOnScroll";
 import { cn } from "@/lib/utils";
 import LocaleSwitcher from "@/providers/language/locale-switcher";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import NavBurger from "../NavBurger";
 import { Button } from "../ui/button";
 const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
-  const t = useTranslations("Layout.Header");
   const locale = useLocale();
-  const liStyle = "hover:bg-accent px-2 py-1.5 rounded";
-  const dropDownItemClass = "transition-colors w-full";
-  const triggerInDropdown =
-    "hover:bg-accent  rounded px-2 py-1.5 w-full text-start";
   const pathName = usePathname();
   const isHomePage = pathName === `/${locale}` ? true : false;
   const scrollY = useOnScroll();
+
   return (
     <header
       className={cn(
         {
-          "md:fixed": isHomePage,
-          "md:relative": !isHomePage,
+          "p-2": scrollY > 50,
+          "p-6": scrollY < 50,
         },
-        "transition-all p-6 border-b top-0 left-0 w-full z-10 bg-gradient-to-b from-background/100 to-background/50"
+        "fixed transition-all border-b top-0 left-0 w-full z-10 bg-gradient-to-b from-background/100 to-background/50"
       )}
     >
       <div className="flex justify-between items-center max-w-screen-2xl mx-auto">
         <Link
           className="rounded-full hover:opacity-80 flex gap-5 items-center"
-          href="/"
+          href="/#hero"
         >
           <svg
-            width="60"
-            height="60"
+            width={scrollY < 50 ? "60" : "40"}
+            height={scrollY < 50 ? "60" : "40"}
             viewBox="0 0 676 687"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -126,20 +122,20 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
             <h1>{name}</h1>
           )}
         </Link>
-        <nav>
-          <ul className="flex justify-center items-center gap-5">
-            <li>
-              <Link href={`/${locale}/#schedule`}>Calendrier</Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/#about`}>A propos de l&apos;hôte</Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/contact`}>Contact</Link>
-            </li>
-          </ul>
-        </nav>
-        <div className=" md:flex">
+        <div className=" md:flex justify-center items-center gap-5">
+          <nav>
+            <ul className="flex justify-center items-center gap-5 font-semibold">
+              <li>
+                <Link href={`/${locale}/#schedule`}>Calendrier</Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/#about`}>A propos de l&apos;hôte</Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/contact`}>Contact</Link>
+              </li>
+            </ul>
+          </nav>
           <Button asChild className="mx-2">
             <Link href={`/${locale}/booking`}>
               <span className="hidden md:flex">Reserver</span>

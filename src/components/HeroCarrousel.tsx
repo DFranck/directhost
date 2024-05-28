@@ -21,9 +21,11 @@ const HeroCarrousel = () => {
 
   return (
     <Section
+      id="hero"
       className={cn(
         {
-          "absolute translate-y-[109px] -z-10": !isHomePage,
+          hidden: !isHomePage,
+          // "absolute translate-y-[109px] -z-10": !isHomePage,
         },
         "h-screen min-h-[300px] transition-all duration-1000"
       )}
@@ -132,7 +134,7 @@ const HeroCarrousel = () => {
             </div>
           </li>
           <li className="bg-background/90 rounded p-2">
-            <h5 className="w-full text-center">Direct</h5>
+            <h5 className="w-full text-center">Autre</h5>
             <div className="w-full h-10">
               <svg
                 width="524"
@@ -192,6 +194,9 @@ const HeroCarrousel = () => {
             </div>
           </li>
         </ul>
+        <h3 className="w-full text-center bg-background/90 rounded px-4 py-2 mt-4">
+          Frais reduit? passer en direct
+        </h3>
       </div>
     </Section>
   );

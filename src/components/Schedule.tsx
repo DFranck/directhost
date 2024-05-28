@@ -19,7 +19,11 @@ export type CalendarEvent = {
   };
 };
 
-const Schedule = () => {
+const Schedule = ({
+  onDateSelect,
+}: {
+  onDateSelect: (dates: { start: Date; end: Date }) => void;
+}) => {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedDates, setSelectedDates] = useState<{
@@ -66,6 +70,7 @@ const Schedule = () => {
 
     const { start, end } = selectInfo;
     setSelectedDates({ start, end });
+    onDateSelect({ start, end });
     console.log("selectInfo", start, end);
   };
 

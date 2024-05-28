@@ -4,7 +4,7 @@ import Schedule from "@/components/Schedule";
 const page = () => {
   return (
     <div>
-      <Schedule />
+      <Schedule onDateSelect={() => {}} />
       <ReservationDetails />
     </div>
   );

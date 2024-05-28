@@ -99,9 +99,11 @@
   }
   * {
     @apply border-border;
-    scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }

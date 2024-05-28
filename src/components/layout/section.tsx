@@ -6,11 +6,13 @@ const Section = ({
   className,
   bgImg,
   style,
+  id,
 }: {
   children: React.ReactNode;
   className?: string;
   bgImg?: string;
   style?: React.CSSProperties;
+  id?: string;
 }) => {
   const backgroundStyle = {
     backgroundImage: bgImg ? `url(${bgImg})` : "none",
@@ -19,6 +21,7 @@ const Section = ({
 
   return (
     <section
+      id={id}
       className={cn(
         "flex items-center justify-center px-5 flex-col w-full relative py-4 md:py-20 bg-cover bg-center",
         className

@@ -4,7 +4,7 @@ import { Mail, Phone } from "lucide-react";
 
 const ContactPage = () => {
   return (
-    <Section className="min-h-screen ">
+    <Section className="min-h-screen">
       <div className="bg-background/80 grid grid-cols-1 md:grid-cols-2 rounded gap-5 p-5 shadow-xl border">
         <EmbeddedMap />
         <div className="flex flex-col gap-5">

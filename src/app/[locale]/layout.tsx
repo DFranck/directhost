@@ -8,7 +8,6 @@ import Providers from "@/providers/providers";
 import type { Metadata } from "next";
 import { useMessages } from "next-intl";
 import { Inter } from "next/font/google";
-import { usePathname } from "next/navigation";
 import "../globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +32,10 @@ export default function LocaleLayout({
       >
         <Providers messages={messages}>
           <NoAuthHeader name="Lorem ipsum" />
+          {/* <Header variant={"fixed"}>
+            <Logo src="/icon-placeholder.png" alt="logo" />
+            <Nav links={["Home", "About", "Contact"]} />
+          </Header> */}
           <HeroCarrousel />
           <Main className="flex-1 max-w-6xl mx-auto">
             {children}
