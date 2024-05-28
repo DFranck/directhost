@@ -16,10 +16,8 @@ const Page = () => {
 
   return (
     <Section>
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        <SearchForm />
-        <Schedule onDateSelect={handleDateSelect} />
-      </div>
+      <SearchForm />
+      <Schedule onDateSelect={handleDateSelect} />
       {selectedDates && (
         <div>
           Dates sélectionnées : du {selectedDates.start.toDateString()} au{" "}

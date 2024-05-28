@@ -101,10 +101,10 @@ const Schedule = ({
       {loading ? (
         <PMFLoader />
       ) : (
-        <Section className="schedule px-4 py-20 ">
+        <Section className="schedule px-4 md:py-4 ">
           <>
             <div className="bg-background/95 rounded p-5">
-              <h2 className="w-full text-center">Calendrier Synchronisé</h2>
+              {/* <h2 className="w-full text-center">Calendrier Synchronisé</h2> */}
               <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
                 initialView="dayGridMonth"
