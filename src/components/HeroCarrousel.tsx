@@ -9,9 +9,11 @@ import Section from "./layout/section";
 
 const HeroCarrousel = () => {
   const [imgs, setImgs] = useState(0);
+  const [videos, setvideos] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
       setImgs(imgs < 2 ? imgs + 1 : 0);
+      setvideos(videos < 2 ? imgs + 1 : 0);
     }, 5000);
     return () => clearInterval(interval);
   });
@@ -29,7 +31,8 @@ const HeroCarrousel = () => {
         },
         "h-screen min-h-[300px] transition-all duration-1000"
       )}
-      bgImg={hero.imgs[imgs]}
+      // bgImg={hero.imgs[imgs]}
+      bgVideo={hero.videos[videos]}
     >
       <div
         className={cn(
@@ -46,10 +49,7 @@ const HeroCarrousel = () => {
               <Check className="text-primary" />
             </div>
             <div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                dignissimos quidem sed quisquam, architecto.
-              </p>
+              <p>Moins de frais en passant en direct.</p>
             </div>
           </li>
           <li className="flex gap-2">
@@ -57,7 +57,7 @@ const HeroCarrousel = () => {
               <Check className="text-primary" />
             </div>
             <div>
-              <p>Lorem ipsum, architecto.</p>
+              <p>Contact direct avec les clients.</p>
             </div>
           </li>
           <li className="flex gap-2">
@@ -87,7 +87,7 @@ const HeroCarrousel = () => {
         <h3 className="w-full text-center bg-background/90 rounded px-4 py-2 mb-4">
           Calendier Synchronisé
         </h3>
-        <ul className="grid grid-cols-3 gap-4">
+        <ul className="grid grid-cols-2 gap-4">
           <li className="bg-background/90 rounded p-2">
             <h5 className="w-full text-center">Airbnb</h5>
             <div className="w-22 h-10">
@@ -133,70 +133,7 @@ const HeroCarrousel = () => {
               </svg>
             </div>
           </li>
-          <li className="bg-background/90 rounded p-2">
-            <h5 className="w-full text-center">Autre</h5>
-            <div className="w-full h-10">
-              <svg
-                width="524"
-                height="525"
-                viewBox="0 0 524 525"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full"
-              >
-                <circle
-                  cx="262"
-                  cy="262.011"
-                  r="262"
-                  fill="url(#paint0_linear_40_25)"
-                />
-                <path
-                  d="M263 169.011C315.002 169.011 354 211.763 354 259.011C354 309.603 297.159 395.148 259.5 439.217C220.798 372.452 169.5 315.103 169.5 259.011C169.5 215.004 206 169.011 263 169.011Z"
-                  fill="white"
-                />
-                <path
-                  d="M377.76 144.62C425.917 180.744 461 218.161 461 260.919C461 338.909 416.206 406.443 350.931 439.217M377.76 144.62C343.052 118.584 301.552 93.2199 261.5 67.011C161.062 135.773 62 199.033 62 260.919C62 360.045 134.362 442.279 229.167 457.721C242.926 459.963 245.795 455.255 259.5 439.217M377.76 144.62V81.4509M259.5 439.217C297.159 395.148 354 309.603 354 259.011C354 211.763 315.002 169.011 263 169.011C206 169.011 169.5 215.004 169.5 259.011C169.5 315.103 220.798 372.452 259.5 439.217Z"
-                  stroke="white"
-                  strokeWidth="35"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M337 262.011C337 303.432 262 409.011 262 409.011C262 409.011 187 303.432 187 262.011C187 220.59 220.579 187.011 262 187.011C303.421 187.011 337 220.59 337 262.011Z"
-                  fill="url(#paint1_linear_40_25)"
-                />
-                <circle cx="262" cy="261.011" r="27" fill="white" />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_40_25"
-                    x1="262"
-                    y1="0.0109863"
-                    x2="262"
-                    y2="524.011"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#FF385C" />
-                    <stop offset="1" stopColor="#7C3AED" />
-                  </linearGradient>
-                  <linearGradient
-                    id="paint1_linear_40_25"
-                    x1="262"
-                    y1="187.011"
-                    x2="262"
-                    y2="409.011"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#FF385C" />
-                    <stop offset="1" stopColor="#7C3AED" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          </li>
         </ul>
-        <h3 className="w-full text-center bg-background/90 rounded px-4 py-2 mt-4">
-          Frais reduit? passer en direct
-        </h3>
       </div>
     </Section>
   );

@@ -20,16 +20,14 @@ export type CalendarEvent = {
 };
 
 const Schedule = ({
-  onDateSelect,
+  setSelectedDates,
+  selectedDates,
 }: {
-  onDateSelect: (dates: { start: Date; end: Date }) => void;
+  selectedDates: { start: Date; end: Date } | null;
+  setSelectedDates: (dates: { start: Date; end: Date }) => void;
 }) => {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedDates, setSelectedDates] = useState<{
-    start: Date;
-    end: Date;
-  } | null>(null);
 
   useEffect(() => {
     const fetchReservation = async () => {
@@ -65,12 +63,15 @@ const Schedule = ({
   };
 
   const handleDateSelect = (selectInfo: any) => {
-    setSelectedDates(null);
-    console.log("selectInfo", selectInfo);
-
     const { start, end } = selectInfo;
     setSelectedDates({ start, end });
-    onDateSelect({ start, end });
+    const formatDate = (date: Date) => {
+      return date.toLocaleDateString("fr-FR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+    };
     console.log("selectInfo", start, end);
   };
 
@@ -103,7 +104,7 @@ const Schedule = ({
       ) : (
         <Section className="schedule px-4 md:py-4 ">
           <>
-            <div className="bg-background/95 rounded p-5">
+            <div className="bg-background/95 rounded p-5 border shadow">
               {/* <h2 className="w-full text-center">Calendrier Synchronisé</h2> */}
               <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}

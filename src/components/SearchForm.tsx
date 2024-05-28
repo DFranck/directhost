@@ -1,55 +1,56 @@
 "use client";
 import { useState } from "react";
+import Schedule from "./Schedule";
 0;
 const SearchForm = () => {
-  const [arrivalDate, setArrivalDate] = useState("");
-  const [departureDate, setDepartureDate] = useState("");
   const [travelers, setTravelers] = useState("");
-
+  const [isScheduleOpen, setIsScheduleOpen] = useState(false);
+  const [selectedDates, setSelectedDates] = useState<{
+    start: Date;
+    end: Date;
+  } | null>(null);
   const handleSearch = () => {
     // Logique de recherche ici
   };
-
+  const handleSchedule = () => {
+    setIsScheduleOpen(!isScheduleOpen);
+  };
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("fr-FR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+  };
   return (
     <div className="mt-20 flex flex-col justify-center items-center w-full p-8">
       <h2 className="mb-5">A quelle date souhaitez vous sejourner?</h2>
-      <div className="border rounded shadow p-2 flex items-center gap-4 w-full">
+      <div className="border rounded shadow p-2 flex items-center gap-4 w-full relative">
         <div className="flex-grow">
           <label
-            htmlFor="arrivalDate"
-            className="block text-sm font-medium sr-only"
-          >
-            Arrivée
-          </label>
-          <input
-            id="arrivalDate"
-            type="date"
-            className="block w-full border-none focus:ring-0 bg-accent p-2 rounded"
-            placeholder="Quand ?"
-            value={arrivalDate}
-            onChange={(e) => setArrivalDate(e.target.value)}
-          />
-        </div>
-        <div className="flex-grow">
-          <label
-            htmlFor="departureDate"
+            htmlFor="période"
             className="block text-sm font-medium text-gray-700 sr-only"
           >
-            Départ
+            période
           </label>
-          <input
-            id="departureDate"
-            type="date"
+          <div
+            id="travelers"
             className="block w-full border-none focus:ring-0 bg-accent p-2 rounded "
-            placeholder="Quand ?"
-            value={departureDate}
-            onChange={(e) => setDepartureDate(e.target.value)}
-          />
+            onClick={handleSchedule}
+          >
+            <p className="text-muted-foreground/60 cursor-pointer">
+              {!selectedDates
+                ? "Choisissez votre période"
+                : `${formatDate(selectedDates.start)} - ${formatDate(
+                    selectedDates.end
+                  )}`}
+            </p>
+          </div>
         </div>
         <div className="flex-grow">
           <label
             htmlFor="travelers"
-            className="block text-sm font-medium text-gray-700 sr-only"
+            className="block text-sm font-medium sr-only"
           >
             Voyageurs
           </label>
@@ -81,6 +82,16 @@ const SearchForm = () => {
             />
           </svg>
         </button>
+        <div
+          className={`${
+            isScheduleOpen ? "opacity-100" : "opacity-0"
+          } absolute top-0 left-0 z-10 w-1/2 mt-12`}
+        >
+          <Schedule
+            setSelectedDates={setSelectedDates}
+            selectedDates={selectedDates}
+          />
+        </div>
       </div>
     </div>
   );

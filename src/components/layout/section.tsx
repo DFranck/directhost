@@ -5,12 +5,16 @@ const Section = ({
   children,
   className,
   bgImg,
+  bgVideo,
+  onVideoEnded,
   style,
   id,
 }: {
   children: React.ReactNode;
   className?: string;
   bgImg?: string;
+  bgVideo?: string;
+  onVideoEnded?: () => void;
   style?: React.CSSProperties;
   id?: string;
 }) => {
@@ -28,6 +32,16 @@ const Section = ({
       )}
       style={style ? { ...backgroundStyle, ...style } : backgroundStyle}
     >
+      {bgVideo && (
+        <video
+          autoPlay
+          muted
+          onEnded={onVideoEnded}
+          src={bgVideo}
+          onPlaying={() => console.log("playing")}
+          className="absolute top-0 left-0 w-full h-full object-cover -z-10 transition-all"
+        />
+      )}
       {children}
     </section>
   );

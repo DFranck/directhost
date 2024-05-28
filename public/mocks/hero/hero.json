@@ -10,5 +10,10 @@
     "/mocks/hero/objet.png",
     "/mocks/hero/tableau-salon.png",
     "/mocks/hero/vue.png"
+  ],
+  "videos": [
+    "/mocks/hero/house.mp4",
+    "/mocks/hero/kitchen.mp4",
+    "/mocks/hero/outside.mp4"
   ]
 }

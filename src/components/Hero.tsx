@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils";
 import { useModal } from "@/providers/modal/modal-provider";
 import Image from "next/image";
 import Section from "./layout/section";
@@ -6,7 +7,13 @@ import { Button } from "./ui/button";
 
 export type ImageSrc = string | null;
 export type HeroImagesSrc = ImageSrc[];
-const Hero = ({ images }: { images?: HeroImagesSrc }) => {
+const Hero = ({
+  images,
+  className,
+}: {
+  images?: HeroImagesSrc;
+  className?: string;
+}) => {
   const { toggleModal, isModalOpen } = useModal();
   if (!images) return null;
   const mainImg: ImageSrc = images?.[0];
@@ -15,7 +22,10 @@ const Hero = ({ images }: { images?: HeroImagesSrc }) => {
     <Section className="hidden md:flex items-start flex-col-reverse md:flex-col p-0">
       <Button
         variant={"outline"}
-        className="hidden md:flex absolute bottom-10 right-6  gap-4 rounded-xl border border-foreground z-10"
+        className={cn(
+          "hidden md:flex absolute bottom-10 right-6  gap-4 rounded-xl border border-foreground z-10",
+          className
+        )}
         onClick={() => toggleModal()}
       >
         <svg
