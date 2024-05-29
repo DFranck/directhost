@@ -1,5 +1,6 @@
 "use client";
 // src/components/Schedule.tsx
+import { cn } from "@/lib/utils";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react";
@@ -22,7 +23,13 @@ export type CalendarEvent = {
 const Schedule = ({
   setSelectedDates,
   selectedDates,
+  setIsScheduleOpen,
+  setIsDatesValidated,
+  isScheduleOpen,
 }: {
+  isScheduleOpen: boolean;
+  setIsDatesValidated: (validated: boolean) => void;
+  setIsScheduleOpen: (open: boolean) => void;
   selectedDates: { start: Date; end: Date } | null;
   setSelectedDates: (dates: { start: Date; end: Date }) => void;
 }) => {
@@ -98,54 +105,59 @@ const Schedule = ({
     return true;
   };
   return (
-    <>
-      {loading ? (
-        <PMFLoader />
-      ) : (
-        <Section className="schedule px-4 md:py-4 ">
-          <>
-            <div className="bg-background/95 rounded p-5 border shadow">
-              {/* <h2 className="w-full text-center">Calendrier Synchronisé</h2> */}
-              <FullCalendar
-                plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
-                initialView="dayGridMonth"
-                events={events}
-                contentHeight={"auto"}
-                selectable={true}
-                select={handleDateSelect}
-                selectAllow={handleSelectAllow}
-                eventClassNames={getEventClassNames}
-                dayCellClassNames={({ date }) => getDateClassNames(date)}
-                eventTimeFormat={{
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  meridiem: false,
+    <Section
+      className={cn(isScheduleOpen ? "" : "hidden", "schedule px-4 md:py-4 ")}
+    >
+      <>
+        <div className="bg-background/95 rounded p-5 border shadow">
+          {loading ? (
+            <PMFLoader />
+          ) : (
+            <FullCalendar
+              plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
+              initialView="dayGridMonth"
+              events={events}
+              contentHeight={"auto"}
+              selectable={true}
+              select={handleDateSelect}
+              selectAllow={handleSelectAllow}
+              eventClassNames={getEventClassNames}
+              dayCellClassNames={({ date }) => getDateClassNames(date)}
+              eventTimeFormat={{
+                hour: "2-digit",
+                minute: "2-digit",
+                meridiem: false,
+              }}
+              headerToolbar={{
+                left: "prev,next",
+                center: "",
+                right: "title",
+                // right: "dayGridMonth,timeGridWeek,timeGridDay",
+              }}
+              buttonText={{
+                today: "Aujourd'hui",
+                month: "Mois",
+                week: "Semaine",
+                day: "Jour",
+              }}
+            />
+          )}
+          {Object.keys(selectedDates || {}).length > 0 && (
+            <div className="w-full flex justify-center my-5">
+              <Button
+                className="p-5"
+                onClick={() => {
+                  setIsScheduleOpen(false);
+                  setIsDatesValidated(true);
                 }}
-                headerToolbar={{
-                  left: "prev,next",
-                  center: "",
-                  right: "title",
-                  // right: "dayGridMonth,timeGridWeek,timeGridDay",
-                }}
-                buttonText={{
-                  today: "Aujourd'hui",
-                  month: "Mois",
-                  week: "Semaine",
-                  day: "Jour",
-                }}
-              />
+              >
+                Valider
+              </Button>
             </div>
-            {Object.keys(selectedDates || {}).length > 0 && (
-              <div className="w-full flex justify-center my-5">
-                <Button className="p-5">
-                  Faire une demande de réservation pour ses dates
-                </Button>
-              </div>
-            )}
-          </>
-        </Section>
-      )}
-    </>
+          )}
+        </div>
+      </>
+    </Section>
   );
 };
 

@@ -3,7 +3,7 @@ import Section from "./layout/section";
 
 const PMFLoader = () => {
   return (
-    <Section className="w-screen h-screen relative flex justify-center items-center">
+    <Section className="relative flex justify-center items-center">
       <div>
         <Image
           src={"/assets/svg/dynamic-logo.svg"}

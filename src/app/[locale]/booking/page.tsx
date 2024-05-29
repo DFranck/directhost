@@ -18,12 +18,7 @@ const Page = () => {
     <Section>
       <SearchForm />
       {/* <Schedule onDateSelect={handleDateSelect} /> */}
-      {selectedDates && (
-        <div>
-          Dates sélectionnées : du {selectedDates.start.toDateString()} au{" "}
-          {selectedDates.end.toDateString()}
-        </div>
-      )}
+
       <Hero images={hero.imgs} className="md:pt-0" />
     </Section>
   );

@@ -1,16 +1,32 @@
 "use client";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 import Schedule from "./Schedule";
 0;
 const SearchForm = () => {
   const [travelers, setTravelers] = useState("");
   const [isScheduleOpen, setIsScheduleOpen] = useState(false);
+  const [isDatesValidated, setIsDatesValidated] = useState(false);
+  const [summary, setSummary] = useState("");
   const [selectedDates, setSelectedDates] = useState<{
     start: Date;
     end: Date;
   } | null>(null);
   const handleSearch = () => {
-    // Logique de recherche ici
+    if (!isDatesValidated || !selectedDates || !travelers) return;
+    const pricePerNight = 30;
+    const nbNights = Math.ceil(
+      (selectedDates.end.getTime() - selectedDates.start.getTime()) /
+        (1000 * 60 * 60 * 24)
+    );
+    const totalPrice = pricePerNight * nbNights * parseInt(travelers);
+    console.log("totalPrice", totalPrice);
+
+    setSummary(
+      `Dates sélectionnées : du ${selectedDates.start.toDateString()} au ${selectedDates.end.toDateString()}.
+      Nombre de voyageurs : ${travelers}.
+      Prix total : ${totalPrice}€`
+    );
   };
   const handleSchedule = () => {
     setIsScheduleOpen(!isScheduleOpen);
@@ -35,10 +51,15 @@ const SearchForm = () => {
           </label>
           <div
             id="travelers"
-            className="block w-full border-none focus:ring-0 bg-accent p-2 rounded "
+            className={cn(
+              !isDatesValidated
+                ? "text-muted-foreground/60 "
+                : "text-foreground ",
+              "block w-full border-none focus:ring-0 bg-accent p-2 rounded cursor-pointer"
+            )}
             onClick={handleSchedule}
           >
-            <p className="text-muted-foreground/60 cursor-pointer">
+            <p>
               {!selectedDates
                 ? "Choisissez votre période"
                 : `${formatDate(selectedDates.start)} - ${formatDate(
@@ -90,9 +111,13 @@ const SearchForm = () => {
           <Schedule
             setSelectedDates={setSelectedDates}
             selectedDates={selectedDates}
+            setIsScheduleOpen={setIsScheduleOpen}
+            setIsDatesValidated={setIsDatesValidated}
+            isScheduleOpen={isScheduleOpen}
           />
         </div>
       </div>
+      {isDatesValidated && selectedDates && <div>{summary}</div>}
     </div>
   );
 };
