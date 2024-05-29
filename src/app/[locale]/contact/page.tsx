@@ -4,11 +4,11 @@ import { Mail, Phone } from "lucide-react";
 
 const ContactPage = () => {
   return (
-    <Section className="min-h-screen">
-      <div className="bg-background/80 grid grid-cols-1 md:grid-cols-2 rounded gap-5 p-5 shadow-xl border">
+    <Section className="min-h-screen px-0 md:px-5 pb-0 mt-20 md:mt-0">
+      <div className="bg-background/80 flex flex-col-reverse md:grid md:grid-cols-2 rounded md:gap-5 md:p-5 md:shadow-xl md:border">
         <EmbeddedMap />
         <div className="flex flex-col gap-5">
-          <ul className="flex flex-col gap-5 bg-background/90 rounded shadow-xl p-5">
+          <ul className="flex flex-col gap-5 bg-background/90 md:rounded md:shadow-xl p-5">
             <li className="flex gap-2">
               <Mail />
               <a href="mailto:contacts@decathlon.com">contacts@client.com</a>
