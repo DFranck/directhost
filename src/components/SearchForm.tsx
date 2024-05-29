@@ -45,14 +45,11 @@ const SearchForm = () => {
     });
   };
   return (
-    <div className="mt-20 flex flex-col justify-center items-center w-full p-8">
+    <div className="mt-20 flex flex-col justify-center items-center w-full md:p-5">
       <h2 className="mb-5">A quelle date souhaitez vous sejourner?</h2>
-      <div className="border rounded shadow p-2 flex items-center gap-4 w-full relative">
-        <div className="flex-grow">
-          <label
-            htmlFor="période"
-            className="block text-sm font-medium text-gray-700 sr-only"
-          >
+      <div className="md:border md:rounded md:shadow p-2 flex flex-col md:flex-row items-center gap-4 w-full relative">
+        <div className="flex-grow w-full">
+          <label htmlFor="période" className="sr-only">
             période
           </label>
           <div
@@ -74,7 +71,7 @@ const SearchForm = () => {
             </p>
           </div>
         </div>
-        <div className="flex-grow">
+        <div className="flex-grow w-full">
           <label
             htmlFor="travelers"
             className="block text-sm font-medium sr-only"
@@ -112,7 +109,7 @@ const SearchForm = () => {
         <div
           className={`${
             isScheduleOpen ? "opacity-100" : "opacity-0"
-          } absolute top-0 left-0 z-10 w-1/2 mt-12`}
+          } absolute top-0 left-0 z-10 md:w-1/2 mt-12`}
         >
           <Schedule
             setSelectedDates={setSelectedDates}

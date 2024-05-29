@@ -11,13 +11,13 @@ const Footer = async () => {
           <div>
             {/* <h4 className="font-semibold text-xl mb-4">Contact</h4> */}
             <ul>
-              <li className="flex items-center justify-center py-2">
+              <li className="flex items-center justify-center">
                 <Link href={`/${locale}/contact`}>Contact</Link>
               </li>
             </ul>
           </div>
-          <span className="w-full border opacity-50 my-10"></span>
-          <div className="flex flex-col md:flex-row justify-center md:gap-5">
+          {/* <span className="w-full border opacity-50 my-10"></span> */}
+          {/* <div className="flex flex-col md:flex-row justify-center md:gap-5">
             <div className="flex  items-center py-2 justify-center  md:justify-end">
               <Link href={`/${locale}/legal-notice`}>{t("legalNotice")} </Link>
             </div>
@@ -26,7 +26,7 @@ const Footer = async () => {
                 {t("generalConditions")}
               </Link>
             </div>
-          </div>
+          </div> */}
           <span className="w-full border opacity-50 my-10"></span>
           <p>{t("copyright")}</p>
         </div>

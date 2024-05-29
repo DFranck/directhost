@@ -106,7 +106,10 @@ const Schedule = ({
   };
   return (
     <Section
-      className={cn(isScheduleOpen ? "" : "hidden", "schedule px-4 md:py-4 ")}
+      className={cn(
+        isScheduleOpen ? "" : "hidden",
+        "schedule px-2 md:px-0 md:py-4 "
+      )}
     >
       <>
         <div className="bg-background/95 rounded p-5 border shadow">

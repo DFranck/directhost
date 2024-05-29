@@ -79,7 +79,13 @@
   .fc-daygrid-event-harness {
     padding: 2px;
   }
-  ::before .fc .fc-daygrid-day-bg .fc-highlight {
+  .fc-basic-view .fc-body .fc-row {
+    min-height: 1em;
+  }
+  .fc .fc-daygrid-body-natural .fc-daygrid-day-events {
+    background-color: red !important;
+  }
+  div .fc-daygrid-day-events {
     background-color: red !important;
   }
   h1 {

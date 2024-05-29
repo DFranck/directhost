@@ -15,7 +15,7 @@ const Page = () => {
   // };
 
   return (
-    <Section>
+    <Section className="px-0 pb-0">
       <SearchForm />
       {/* <Schedule onDateSelect={handleDateSelect} /> */}
 
