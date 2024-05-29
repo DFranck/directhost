@@ -19,7 +19,6 @@ export default function Index() {
         <EmbeddedMap />
       </div>
       {/* <Host /> */}
-      <Gallery images={hero.imgs} />
     </div>
   );
 }

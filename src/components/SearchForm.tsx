@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import Schedule from "./Schedule";
+import { Button } from "./ui/button";
 0;
 const SearchForm = () => {
   const [travelers, setTravelers] = useState("");
@@ -23,9 +24,13 @@ const SearchForm = () => {
     console.log("totalPrice", totalPrice);
 
     setSummary(
-      `Dates sélectionnées : du ${selectedDates.start.toDateString()} au ${selectedDates.end.toDateString()}.
-      Nombre de voyageurs : ${travelers}.
-      Prix total : ${totalPrice}€`
+      `
+      Période : du ${formatDate(selectedDates.start)} au ${formatDate(
+        selectedDates.end
+      )}<br/>
+      Nombre de voyageurs : ${travelers} <br/>
+      Prix total pour ${nbNights} nuit(s) : ${totalPrice}€
+      `
     );
   };
   const handleSchedule = () => {
@@ -33,8 +38,9 @@ const SearchForm = () => {
   };
   const formatDate = (date: Date) => {
     return date.toLocaleDateString("fr-FR", {
+      weekday: "long",
       day: "2-digit",
-      month: "2-digit",
+      month: "long",
       year: "numeric",
     });
   };
@@ -117,7 +123,12 @@ const SearchForm = () => {
           />
         </div>
       </div>
-      {isDatesValidated && selectedDates && <div>{summary}</div>}
+      {isDatesValidated && selectedDates && (
+        <div className="bg-card border shadow rounded w-full p-5 mt-5 flex flex-col ">
+          <div dangerouslySetInnerHTML={{ __html: summary }} />
+          <Button className="w-fit self-end">Valider</Button>
+        </div>
+      )}
     </div>
   );
 };

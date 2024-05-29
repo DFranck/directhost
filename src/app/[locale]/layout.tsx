@@ -1,4 +1,6 @@
+import hero from "@/../public/mocks/hero/hero.json";
 import Cart from "@/components/Cart";
+import Gallery from "@/components/Gallery";
 import HeroCarrousel from "@/components/HeroCarrousel";
 import Footer from "@/components/layout/footer";
 import Main from "@/components/layout/main";
@@ -42,6 +44,7 @@ export default function LocaleLayout({
             <Cart />
           </Main>
           <Footer />
+          <Gallery images={hero.imgs} />
         </Providers>
       </body>
     </html>
