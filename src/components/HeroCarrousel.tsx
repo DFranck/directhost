@@ -29,15 +29,14 @@ const HeroCarrousel = () => {
           hidden: !isHomePage,
           // "absolute translate-y-[109px] -z-10": !isHomePage,
         },
-        "h-screen min-h-[300px] transition-all duration-1000"
+        "md:h-screen min-h-[300px] transition-all duration-1000"
       )}
       // bgImg={hero.imgs[imgs]}
       bgVideo={hero.videos[videos]}
     >
       <div
         className={cn(
-          { hidden: !isHomePage, "md:block": isHomePage },
-          "absolute bottom-20 right-10 bg-background/90 w-60 rounded"
+          "absolute hidden md:block bottom-20 right-10 bg-background/90 w-60 rounded"
         )}
       >
         <h3 className="bg-primary text-primary-foreground px-4 rounded-t">

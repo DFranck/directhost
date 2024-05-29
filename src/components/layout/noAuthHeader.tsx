@@ -2,7 +2,8 @@
 
 import useOnScroll from "@/hooks/useOnScroll";
 import { cn } from "@/lib/utils";
-import LocaleSwitcher from "@/providers/language/locale-switcher";
+import { useModal } from "@/providers/modal/modal-provider";
+import { CalendarRange } from "lucide-react";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,15 +15,15 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
   const pathName = usePathname();
   const isHomePage = pathName === `/${locale}` ? true : false;
   const scrollY = useOnScroll();
-
+  const { toggleModal } = useModal();
   return (
     <header
       className={cn(
         {
-          "p-2": scrollY > 50,
-          "p-6": scrollY < 50,
+          "md:p-2": scrollY > 50,
+          "md:p-4": scrollY < 50,
         },
-        "fixed transition-all border-b top-0 left-0 w-full z-10 bg-gradient-to-b from-background/100 to-background/50"
+        "p-2 fixed transition-all border-b top-0 left-0 w-full z-10 bg-gradient-to-b from-background/100 to-background/50"
       )}
     >
       <div className="flex justify-between items-center max-w-screen-2xl mx-auto">
@@ -122,11 +123,12 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
             <h1>{name}</h1>
           )}
         </Link>
-        <div className=" md:flex justify-center items-center gap-5">
-          <nav>
+        <div className=" md:flex justify-center items-center gap-2 lg:gap-5">
+          <nav className="hidden md:block">
             <ul className="flex justify-center items-center gap-5 font-semibold">
-              <li>
-                <Link href={`/${locale}/#schedule`}>Calendrier</Link>
+              <li onClick={toggleModal} className="cursor-pointer">
+                Gallery
+                {/* <Link href={`/${locale}/#schedule`}>Calendrier</Link> */}
               </li>
               <li>
                 <Link href={`/${locale}/#about`}>A propos de l&apos;hôte</Link>
@@ -139,10 +141,13 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
           <Button asChild className="mx-2">
             <Link href={`/${locale}/booking`}>
               <span className="hidden md:flex">Reserver</span>
+              <span className="md:hidden flex">
+                <CalendarRange />
+              </span>
             </Link>
           </Button>
           <div className="hidden md:flex justify-center gap-2">
-            <LocaleSwitcher />
+            {/* <LocaleSwitcher /> */}
             {/* <ThemeSwitcher /> */}
           </div>
           <NavBurger />

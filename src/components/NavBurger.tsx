@@ -1,8 +1,8 @@
 // components/NavBurger.tsx
 // Utilisation de React et Tailwind CSS pour créer un composant NavBurger fonctionnel
 
-import LocaleSwitcher from "@/providers/language/locale-switcher";
-import { ThemeSwitcher } from "@/providers/theme/theme-switcher";
+import { cn } from "@/lib/utils";
+import { useModal } from "@/providers/modal/modal-provider";
 import { Dialog } from "@headlessui/react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
@@ -14,6 +14,7 @@ const NavBurger = () => {
   const locale = useLocale();
   const dropDownItemClass = "transition-colors w-full";
   const liStyle = "hover:bg-accent w-full block p-5";
+  const { toggleModal } = useModal();
   return (
     <>
       <button className="md:hidden rounded p-2" onClick={() => setIsOpen(true)}>
@@ -67,22 +68,21 @@ const NavBurger = () => {
 
             <nav>
               <ul className="flex flex-col">
+                <li
+                  onClick={toggleModal}
+                  className={cn(liStyle, "cursor-pointer")}
+                >
+                  Gallery
+                  {/* <Link href={`/${locale}/#schedule`}>Calendrier</Link> */}
+                </li>
                 <li>
-                  <Link className={liStyle} href={`/${locale}/products`}>
-                    {t("Nav.all")}
+                  <Link className={liStyle} href={`/${locale}/#about`}>
+                    A propos de l&apos;hôte
                   </Link>
                 </li>
                 <li>
-                  <Link className={liStyle} href={`/${locale}/products/spades`}>
-                    {t("Nav.spades")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className={liStyle}
-                    href={`/${locale}/products/accessories`}
-                  >
-                    {t("Nav.accessories")}
+                  <Link className={liStyle} href={`/${locale}/contact`}>
+                    Contact
                   </Link>
                 </li>
 
@@ -98,8 +98,8 @@ const NavBurger = () => {
             </nav>
 
             <div className="flex justify-end items-center gap-2 p-5">
-              <LocaleSwitcher />
-              <ThemeSwitcher />
+              {/* <LocaleSwitcher />
+              <ThemeSwitcher /> */}
             </div>
           </Dialog.Panel>
         </div>

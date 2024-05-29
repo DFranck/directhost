@@ -28,18 +28,31 @@ const Gallery = ({ images }: { images?: HeroImagesSrc }) => {
       >
         <Cross className="rotate-45" />
       </Button>
-      <div className="w-screen h-screen overflow-auto m-auto ">
-        <div className="w-1/2 mx-auto my-40 flex flex-col  gap-5 border rounded shadow p-5">
-          {images?.map((image, index) => (
-            <Image
-              key={index}
-              src={image || ""}
-              width={1000}
-              height={1000}
-              alt="gallery"
-              className="w-full h-full object-cover"
-            />
-          ))}
+      <div className="w-screen h-screen overflow-auto m-auto px-5">
+        <div className="max-w-3xl mx-auto my-40 grid grid-cols-2  gap-2 md:gap-4 border rounded shadow p-2 md:p-4">
+          {images?.map((image, index) => {
+            const className = (() => {
+              if (index % 6 === 0) return "col-span-2 row-span-2";
+              if (index % 6 === 1 || index % 6 === 2) return "col-span-1";
+              if (index % 6 === 3) return "col-span-1 row-span-2";
+              return "col-span-1";
+            })();
+            return (
+              <div
+                key={index}
+                className={`relative w-full h-full grid ${className}`}
+              >
+                <Image
+                  src={image || ""}
+                  objectFit="cover"
+                  alt="gallery"
+                  width={1000}
+                  height={1000}
+                  className="rounded w-full h-full"
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
