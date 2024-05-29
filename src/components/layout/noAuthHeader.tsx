@@ -8,7 +8,6 @@ import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import NavBurger from "../NavBurger";
 import { Button } from "../ui/button";
 const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
   const locale = useLocale();
@@ -150,7 +149,7 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
             {/* <LocaleSwitcher /> */}
             {/* <ThemeSwitcher /> */}
           </div>
-          <NavBurger />
+          {/* <NavBurger /> */}
         </div>
       </div>
     </header>

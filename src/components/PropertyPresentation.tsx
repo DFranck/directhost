@@ -23,27 +23,29 @@ const PropertyPresentation = () => {
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. At,
         laudantium?
       </p>
-      <Section className="flex md:flex-row gap-4 w-full mx-auto py-4">
+      <Section className="flex md:grid grid-cols-3 gap-2 w-full mx-auto px-0 py-4">
         <Button
           variant={"outline"}
-          className="gap-2 w-full md:w-fit"
+          className="gap-2 w-full"
           onClick={() => toggleModal()}
         >
           <Images />
           Gallery
         </Button>
-        <Button asChild variant={"outline"} className="gap-2 w-full md:w-fit">
-          <Link href={`/${locale}/booking`}>
-            <CalendarCheck />
-            Reserver
-          </Link>
-        </Button>
-        <Button asChild variant={"outline"} className="gap-2 w-full md:w-fit">
-          <Link href={`/${locale}/#localisation`}>
-            <MapPin />
-            Localisation
-          </Link>
-        </Button>
+        <div className="grid grid-cols-2 md:col-span-2 gap-2 w-full">
+          <Button asChild variant={"outline"} className="gap-2 w-full">
+            <Link href={`/${locale}/booking`}>
+              <CalendarCheck />
+              Reserver
+            </Link>
+          </Button>
+          <Button asChild variant={"outline"} className="gap-2 w-full">
+            <Link href={`/${locale}/#localisation`}>
+              <MapPin />
+              Localisation
+            </Link>
+          </Button>
+        </div>
       </Section>
     </Section>
   );

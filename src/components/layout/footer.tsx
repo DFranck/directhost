@@ -1,5 +1,4 @@
 import { useLocale, useTranslations } from "next-intl";
-import Image from "next/image";
 import Link from "next/link";
 
 const Footer = async () => {
@@ -10,18 +9,10 @@ const Footer = async () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col justify-evenly">
           <div>
-            <h4 className="font-semibold text-xl mb-4">{t("Partner.title")}</h4>
+            {/* <h4 className="font-semibold text-xl mb-4">Contact</h4> */}
             <ul>
               <li className="flex items-center justify-center py-2">
-                <Image
-                  src={"/assets/imgs/partners/asc.png"}
-                  alt="ASC-logo"
-                  width={50}
-                  height={50}
-                />
-                <a href="https://www.asc-tcd.com/" className="hover:underline">
-                  ASC
-                </a>
+                <Link href={`/${locale}/contact`}>Contact</Link>
               </li>
             </ul>
           </div>
