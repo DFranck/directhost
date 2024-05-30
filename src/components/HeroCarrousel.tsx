@@ -40,7 +40,7 @@ const HeroCarrousel = () => {
         )}
       >
         <h3 className="bg-primary text-primary-foreground px-4 rounded-t">
-          Avantages
+          0% de frais
         </h3>
         <ul className="p-4 text-xs flex flex-col gap-4">
           <li className="flex gap-2 ">
@@ -48,7 +48,10 @@ const HeroCarrousel = () => {
               <Check className="text-primary" />
             </div>
             <div>
-              <p>Moins de frais en passant en direct.</p>
+              <p>
+                Les réservations directes n&apos;ont pas de frais de service
+                additionnels imposés par les plateformes.
+              </p>
             </div>
           </li>
           <li className="flex gap-2">
@@ -56,7 +59,10 @@ const HeroCarrousel = () => {
               <Check className="text-primary" />
             </div>
             <div>
-              <p>Contact direct avec les clients.</p>
+              <p>
+                Vous pouvez interagir directement avec les hôtes, sans
+                intermédiaire.
+              </p>
             </div>
           </li>
           <li className="flex gap-2">
@@ -64,7 +70,10 @@ const HeroCarrousel = () => {
               <Check className="text-primary" />
             </div>
             <div>
-              <p>Lorem ipsum dolor sit amet architecto.</p>
+              <p>
+                Les politiques d&apos;annulation peuvent être plus souples et
+                négociables.
+              </p>
             </div>
           </li>
           <li className="flex gap-2">
@@ -72,7 +81,10 @@ const HeroCarrousel = () => {
               <Check className="text-primary" />
             </div>
             <div>
-              <p>Lorem ipsum dolor sit amet.</p>
+              <p>
+                Les arrangements de réservation peuvent être adaptés aux besoins
+                spécifiques du client.
+              </p>
             </div>
           </li>
         </ul>
@@ -80,12 +92,12 @@ const HeroCarrousel = () => {
       <div
         className={cn(
           { hidden: !isHomePage, "hidden lg:block": isHomePage },
-          "absolute bottom-20 left-10"
+          "absolute bottom-10 left-10"
         )}
       >
-        <h3 className="w-full text-center bg-background/90 rounded px-4 py-2 mb-4">
+        {/* <h3 className="w-full text-center bg-background/90 rounded px-4 py-2 mb-4">
           Calendier Synchronisé
-        </h3>
+        </h3> */}
         <ul className="grid grid-cols-2 gap-4">
           <li className="bg-background/90 rounded p-2">
             <h5 className="w-full text-center">Airbnb</h5>
