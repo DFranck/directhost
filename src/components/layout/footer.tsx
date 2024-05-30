@@ -5,7 +5,7 @@ const Footer = async () => {
   const locale = useLocale();
   const t = useTranslations("Layout.Footer");
   return (
-    <footer className="bg-gradient text-primary-foreground py-8 text-center">
+    <footer className="bg-gradient text-primary-foreground py-4 text-center">
       <div className="container mx-auto px-4">
         <div className="flex flex-col justify-evenly">
           <div>
@@ -27,7 +27,7 @@ const Footer = async () => {
               </Link>
             </div>
           </div> */}
-          <span className="w-full border opacity-50 my-10"></span>
+          <span className="w-full border opacity-50 my-4"></span>
           <p>{t("copyright")}</p>
         </div>
       </div>

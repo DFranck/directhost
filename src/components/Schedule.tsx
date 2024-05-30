@@ -1,23 +1,30 @@
-"use client";
 // src/components/Schedule.tsx
-import { cn } from "@/lib/utils";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionPlugin from "@fullcalendar/interaction";
-import FullCalendar from "@fullcalendar/react";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import { isPast } from "date-fns";
+
+import { format, getDay, isBefore, parse, startOfWeek } from "date-fns";
+import { fr } from "date-fns/locale";
 import { useEffect, useState } from "react";
+import { Calendar, SlotInfo, dateFnsLocalizer } from "react-big-calendar";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import PMFLoader from "./PMFLoader";
 import Section from "./layout/section";
-import { Button } from "./ui/button";
+
+const locales = {
+  fr: fr,
+};
+
+const localizer = dateFnsLocalizer({
+  format,
+  parse,
+  startOfWeek,
+  getDay,
+  locales,
+});
 
 export type CalendarEvent = {
   title: string;
   start: Date;
   end: Date;
-  extendedProps: {
-    source: string;
-  };
+  source: string;
 };
 
 const Schedule = ({
@@ -35,9 +42,11 @@ const Schedule = ({
 }) => {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [loading, setLoading] = useState(true);
+  const [date, setDate] = useState(new Date());
+  const [startClickDate, setStartClickDate] = useState<Date | null>(null);
 
   useEffect(() => {
-    const fetchReservation = async () => {
+    const fetchReservations = async () => {
       try {
         const res = await fetch("/api/schedule", {
           method: "POST",
@@ -45,118 +54,109 @@ const Schedule = ({
             "Content-Type": "application/json",
           },
         }).then((res) => res.json());
-        setEvents(res);
+
+        // Convert all dates to Date objects
+        const convertedEvents = res.map((event: any) => ({
+          ...event,
+          start: new Date(event.start),
+          end: new Date(event.end),
+        }));
+
+        setEvents(convertedEvents);
         setLoading(false);
-        console.log(res);
+        console.log(convertedEvents);
       } catch {
         console.log("error");
       }
     };
-    fetchReservation();
+    fetchReservations();
   }, []);
-  const getEventClassNames = (eventInfo: any) => {
-    return ["event-other"];
-    // switch (eventInfo.event.extendedProps.source) {
-    //   case "airbnb":
-    //     return ["event-airbnb"];
-    //   case "booking":
-    //     return ["event-booking"];
-    //   default:
-    //     return ["event-other"];
-    // }
-  };
-  const getDateClassNames = (date: Date) => {
-    return isPast(date) ? "past-date" : "";
-  };
 
-  const handleDateSelect = (selectInfo: any) => {
-    const { start, end } = selectInfo;
+  const handleSelectSlot = ({ start, end }: SlotInfo) => {
+    if (isBefore(start, new Date()) || isDateReserved(start, end)) {
+      return; // Prevent selecting past or reserved dates
+    }
     setSelectedDates({ start, end });
-    const formatDate = (date: Date) => {
-      return date.toLocaleDateString("fr-FR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-      });
-    };
     console.log("selectInfo", start, end);
   };
 
-  const isDateReserved = (date: Date) => {
-    const reserved = events.some((event) => {
-      return date >= new Date(event.start) && date < new Date(event.end);
-    });
-    // console.log(`Date ${date.toISOString()} is reserved: ${reserved}`);
-    return reserved;
+  const handleSelectEvent = (event: CalendarEvent) => {
+    // Handle event selection if needed
   };
-  const handleSelectAllow = (selectInfo: any) => {
-    const { start, end } = selectInfo;
-    let date = new Date(start);
 
-    while (date < end) {
-      if (isDateReserved(date) || isPast(date)) {
-        // console.log(
-        //   `Date range from ${start} to ${end} includes a reserved or past date.`
-        // );
-        return false;
+  const handleDayClick = (date: Date) => {
+    if (startClickDate) {
+      if (
+        isBefore(date, startClickDate) ||
+        isDateReserved(startClickDate, date)
+      ) {
+        return; // Prevent invalid date ranges
       }
-      date.setDate(date.getDate() + 1);
+      setSelectedDates({ start: startClickDate, end: date });
+      setStartClickDate(null);
+      console.log("End date selected", startClickDate, date);
+    } else {
+      setStartClickDate(date);
+      console.log("Start date selected", date);
     }
-    return true;
   };
+
+  const isDateReserved = (start: Date, end: Date) => {
+    return events.some((event) => {
+      return (
+        (start >= event.start && start < event.end) ||
+        (end > event.start && end <= event.end)
+      );
+    });
+  };
+
+  const dayPropGetter = (date: Date) => {
+    if (isBefore(date, new Date()) || isDateReserved(date, date)) {
+      return {
+        className: "bg-gray-200 text-gray-400 cursor-not-allowed",
+        style: {
+          backgroundColor: "#f0f0f0",
+          color: "#a0a0a0",
+        },
+      };
+    }
+    return {};
+  };
+
+  const onNavigate = (newDate: Date, view: string) => {
+    setDate(newDate);
+    console.log("Navigated to date:", newDate);
+  };
+
   return (
     <Section
-      className={cn(
-        isScheduleOpen ? "" : "hidden",
-        "schedule px-2 md:px-0 md:py-4 "
-      )}
+      className={`schedule px-2 md:px-0 md:py-4 ${
+        isScheduleOpen ? "" : "hidden"
+      }`}
     >
       <>
-        <div className="bg-background/95 rounded p-5 border shadow">
+        <div className="bg-background/95 rounded p-5 border shadow w-full">
           {loading ? (
             <PMFLoader />
           ) : (
-            <FullCalendar
-              plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
-              initialView="dayGridMonth"
+            <Calendar
+              localizer={localizer}
               events={events}
-              contentHeight={"auto"}
-              selectable={true}
-              select={handleDateSelect}
-              selectAllow={handleSelectAllow}
-              eventClassNames={getEventClassNames}
-              dayCellClassNames={({ date }) => getDateClassNames(date)}
-              eventTimeFormat={{
-                hour: "2-digit",
-                minute: "2-digit",
-                meridiem: false,
-              }}
-              headerToolbar={{
-                left: "prev,next",
-                center: "",
-                right: "title",
-                // right: "dayGridMonth,timeGridWeek,timeGridDay",
-              }}
-              buttonText={{
-                today: "Aujourd'hui",
-                month: "Mois",
-                week: "Semaine",
-                day: "Jour",
-              }}
+              startAccessor="start"
+              endAccessor="end"
+              style={{ height: 350 }}
+              selectable
+              onSelectSlot={handleSelectSlot}
+              onSelectEvent={handleSelectEvent}
+              dayPropGetter={dayPropGetter}
+              onDrillDown={handleDayClick} // Handle day click for two-click selection
+              views={["month"]}
+              toolbar={true}
+              step={60}
+              showMultiDayTimes
+              date={date}
+              onNavigate={onNavigate}
             />
-          )}
-          {Object.keys(selectedDates || {}).length > 0 && (
-            <div className="w-full flex justify-center my-5">
-              <Button
-                className="p-5"
-                onClick={() => {
-                  setIsScheduleOpen(false);
-                  setIsDatesValidated(true);
-                }}
-              >
-                Valider
-              </Button>
-            </div>
           )}
         </div>
       </>

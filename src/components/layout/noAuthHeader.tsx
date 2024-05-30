@@ -19,7 +19,7 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
     <header
       className={cn(
         {
-          "md:p-2": scrollY > 50,
+          "md:p-2 bg-background": scrollY > 50,
           "md:p-4": scrollY < 50,
         },
         "p-2 fixed transition-all border-b top-0 left-0 w-full z-10 bg-gradient-to-b from-background/100 to-background/50"
