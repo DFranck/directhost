@@ -48,8 +48,25 @@ const SearchForm = () => {
   };
 
   const handleTravelers = (travelers: string) => {
-    if (parseInt(travelers) > 0 && parseInt(travelers) <= 4) {
+    if (parseInt(travelers) > 0 && parseInt(travelers) <= 4 && blockDates) {
       setBlockTravelers(true);
+      if (selectedDates) {
+        const pricePerNight = 30;
+        const nbNights = Math.ceil(
+          (selectedDates.end.getTime() - selectedDates.start.getTime()) /
+            (1000 * 60 * 60 * 24)
+        );
+        const totalPrice = pricePerNight * nbNights * parseInt(travelers);
+        alert(
+          `Votre demande de reservation pour la periode du ${formatDate(
+            selectedDates.start
+          )} au ${formatDate(
+            selectedDates.end
+          )} pour ${travelers} voyageurs a bien ete prise en compte. pour information cela represente ${totalPrice} €. Vous economisez ${
+            nbNights * (30 + 20)
+          } € sans l'utilisation de plateforme tiers.`
+        );
+      }
     }
   };
   const handleDates = (selectedDates: { start: Date; end: Date }) => {
@@ -58,11 +75,11 @@ const SearchForm = () => {
   };
   useEffect(() => {
     if (blockDates && blockTravelers) {
-      console.log(summary);
+      console.log(travelers);
 
-      alert(summary);
+      console.log("periode et travelers ok");
     }
-  }, [blockDates, blockTravelers, summary]);
+  }, [blockDates, blockTravelers, summary, travelers]);
   return (
     <div className="mt-20 flex flex-col justify-center items-center w-full md:p-5">
       <h2 className="mb-5">A quelle date souhaitez vous sejourner?</h2>
@@ -100,7 +117,7 @@ const SearchForm = () => {
               )}
               onClick={() => handleDates(selectedDates)}
             >
-              Valider
+              Vérifier
             </Button>
           )}
         </div>
@@ -117,8 +134,8 @@ const SearchForm = () => {
             type="number"
             className={cn(
               {
+                "bg-green-100": blockTravelers,
                 "bg-accent": !blockTravelers,
-                "bg-green-100": blockTravelers && travelers,
               },
               "block w-full border-none focus:ring-0 p-2 rounded-l text-sm outline-none focus:bg-accent"
             )}
@@ -126,24 +143,23 @@ const SearchForm = () => {
             value={travelers}
             onChange={(e) => setTravelers(e.target.value)}
           />
-          {travelers && (
-            <Button
-              className={cn(
-                {
-                  hidden: blockTravelers,
-                },
-                "rounded-none rounded-r"
-              )}
-              onClick={() => handleTravelers(travelers)}
-            >
-              Valider
-            </Button>
-          )}
+          <Button
+            className={cn(
+              {
+                hidden: blockTravelers,
+              },
+              "rounded-none rounded-r"
+            )}
+            onClick={() => handleTravelers(travelers)}
+            variant={!travelers ? "outline" : "default"}
+          >
+            Valider
+          </Button>
         </div>
         <div
           className={`${
             isScheduleOpen ? "opacity-100" : "opacity-0"
-          } absolute top-0 left-0 z-10 mt-10 md:mt-12 w-full`}
+          } absolute top-0 left-0 z-10 mt-10 md:mt-12 xl:w-1/2 w-full`}
         >
           <Schedule
             setSelectedDates={setSelectedDates}

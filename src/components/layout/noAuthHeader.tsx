@@ -3,6 +3,7 @@
 import useOnScroll from "@/hooks/useOnScroll";
 import { cn } from "@/lib/utils";
 import { useModal } from "@/providers/modal/modal-provider";
+import { ThemeSwitcher } from "@/providers/theme/theme-switcher";
 import { CalendarCheck } from "lucide-react";
 import { useLocale } from "next-intl";
 import Image from "next/image";
@@ -146,7 +147,7 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
           </Button>
           <div className="hidden md:flex justify-center gap-2">
             {/* <LocaleSwitcher /> */}
-            {/* <ThemeSwitcher /> */}
+            <ThemeSwitcher />
           </div>
           {/* <NavBurger /> */}
         </div>
