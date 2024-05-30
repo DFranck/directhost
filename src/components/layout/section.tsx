@@ -1,12 +1,12 @@
+"use client";
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Section = ({
   children,
   className,
   bgImg,
   bgVideo,
-  onVideoEnded,
   style,
   id,
 }: {
@@ -14,10 +14,22 @@ const Section = ({
   className?: string;
   bgImg?: string;
   bgVideo?: string;
-  onVideoEnded?: () => void;
   style?: React.CSSProperties;
   id?: string;
 }) => {
+  const [currentVideo, setCurrentVideo] = useState(bgVideo);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    if (bgVideo !== currentVideo) {
+      setFadeOut(true);
+      setTimeout(() => {
+        setCurrentVideo(bgVideo);
+        setFadeOut(false);
+      }, 500); // Duration of the fade-out transition
+    }
+  }, [bgVideo, currentVideo]);
+
   const backgroundStyle = {
     backgroundImage: bgImg ? `url(${bgImg})` : "none",
     backgroundRepeat: "no-repeat",
@@ -32,14 +44,16 @@ const Section = ({
       )}
       style={style ? { ...backgroundStyle, ...style } : backgroundStyle}
     >
-      {bgVideo && (
+      {currentVideo && (
         <video
           autoPlay
           muted
-          onEnded={onVideoEnded}
-          src={bgVideo}
+          onEnded={() => setFadeOut(true)}
+          src={currentVideo}
           onPlaying={() => console.log("playing")}
-          className="absolute top-0 left-0 w-full h-full object-cover -z-10 transition-all"
+          className={`absolute top-0 left-0 w-full h-full object-cover -z-10 transition-opacity duration-1000 ${
+            fadeOut ? "opacity-0" : "opacity-100"
+          }`}
         />
       )}
       {children}

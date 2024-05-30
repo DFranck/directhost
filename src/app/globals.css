@@ -85,6 +85,10 @@
   .fc .fc-daygrid-body-natural .fc-daygrid-day-events {
     background-color: red !important;
   }
+  .transition-opacity {
+    transition: opacity 1s ease-in-out;
+  }
+
   div .fc-daygrid-day-events {
     background-color: red !important;
   }
