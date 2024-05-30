@@ -3,7 +3,7 @@
 import useOnScroll from "@/hooks/useOnScroll";
 import { cn } from "@/lib/utils";
 import { useModal } from "@/providers/modal/modal-provider";
-import { CalendarRange } from "lucide-react";
+import { CalendarCheck } from "lucide-react";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -141,7 +141,7 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
             <Link href={`/${locale}/booking`}>
               <span className="hidden md:flex">Reserver</span>
               <span className="md:hidden flex">
-                <CalendarRange />
+                <CalendarCheck />
               </span>
             </Link>
           </Button>

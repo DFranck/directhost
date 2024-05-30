@@ -1,6 +1,6 @@
 "use client";
 import { useModal } from "@/providers/modal/modal-provider";
-import { CalendarCheck, Images, MapPin } from "lucide-react";
+import { CalendarCheck } from "lucide-react";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import Section from "./layout/section";
@@ -23,30 +23,18 @@ const PropertyPresentation = () => {
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. At,
         laudantium?
       </p>
-      <Section className="flex md:grid grid-cols-3 gap-2 w-full mx-auto px-0 py-4">
+      <div className=" gap-2 ">
         <Button
+          asChild
           variant={"outline"}
-          className="gap-2 w-full"
-          onClick={() => toggleModal()}
+          className="gap-2 bg-primary text-primary-foreground w-full"
         >
-          <Images />
-          Gallery
+          <Link href={`/${locale}/booking`}>
+            <CalendarCheck />
+            Reserver
+          </Link>
         </Button>
-        <div className="grid grid-cols-2 md:col-span-2 gap-2 w-full">
-          <Button asChild variant={"outline"} className="gap-2 w-full">
-            <Link href={`/${locale}/booking`}>
-              <CalendarCheck />
-              Reserver
-            </Link>
-          </Button>
-          <Button asChild variant={"outline"} className="gap-2 w-full">
-            <Link href={`/${locale}/#localisation`}>
-              <MapPin />
-              Localisation
-            </Link>
-          </Button>
-        </div>
-      </Section>
+      </div>
     </Section>
   );
 };
