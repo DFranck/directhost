@@ -39,7 +39,7 @@ const HeroCarrousel = () => {
           "absolute hidden md:block bottom-20 right-10 bg-background/90 w-60 rounded"
         )}
       >
-        <h3 className="bg-primary text-primary-foreground px-4 rounded-t">
+        <h3 className="bg-primary text-primary-foreground px-4 py-2 rounded-t">
           0% de frais
         </h3>
         <ul className="p-4 text-xs flex flex-col gap-4">

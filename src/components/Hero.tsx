@@ -19,7 +19,10 @@ const Hero = ({
   const mainImg: ImageSrc = images?.[0];
   const followingImg: HeroImagesSrc = images?.slice(1, 5);
   return (
-    <Section className="flex items-start flex-col-reverse md:flex-col md:py-0 px-0 pb-0 md:px-5">
+    <Section
+      id="gallery"
+      className="flex items-start flex-col-reverse md:flex-col md:py-0 px-0 pb-0 md:px-5"
+    >
       <Button
         variant={"outline"}
         className={cn(

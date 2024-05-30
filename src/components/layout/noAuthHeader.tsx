@@ -125,9 +125,8 @@ const NoAuthHeader = ({ logo, name }: { logo?: string; name?: string }) => {
         <div className=" md:flex justify-center items-center gap-2 lg:gap-5">
           <nav className="hidden md:block">
             <ul className="flex justify-center items-center gap-5 font-semibold">
-              <li onClick={toggleModal} className="cursor-pointer">
-                Gallery
-                {/* <Link href={`/${locale}/#schedule`}>Calendrier</Link> */}
+              <li>
+                <Link href={`/${locale}/#gallery`}>Photos</Link>
               </li>
               <li>
                 <Link href={`/${locale}/#about`}>A propos de l&apos;hôte</Link>
