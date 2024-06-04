@@ -31,8 +31,8 @@ const HeroCarrousel = () => {
         },
         "md:h-screen min-h-[300px] transition-all duration-1000"
       )}
-      // bgImg={hero.imgs[imgs]}
-      bgVideo={hero.videos[videos]}
+      bgImg={hero.imgs[imgs]}
+      // bgVideo={hero.videos[videos]}
     >
       <div
         className={cn(
